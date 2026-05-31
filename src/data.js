@@ -30,7 +30,7 @@ export const links = {
   email: 'yonghao.lee.il@gmail.com',
   github: 'https://github.com/Yonghao-Lee',
   // Add or remove as you like. Set a value to '' to hide that link.
-  linkedin: '',
+  linkedin: 'https://www.linkedin.com/in/yonghao-lee-101a77221/',
   twitter: '',
 }
 
