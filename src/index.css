@@ -376,30 +376,47 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
   color: var(--muted); font-size: 1.2rem;
 }
 .footer__built a { color: var(--green); }
+.footer__heart { color: var(--pink); }
 
 /* ===========================================================================
-   Pixel cat mascot — sits in the bottom-left corner with an idle bob.
+   Pixel cat mascots.
+   - corner: small foreground mascot, bottom-left, idle bob.
+   - center: large faint watermark sitting behind all content.
    =========================================================================== */
-.pixel-cat {
-  position: fixed;
+.pixel-cat { position: fixed; pointer-events: none; }
+.pixel-cat svg { display: block; height: auto; }
+
+.pixel-cat--corner {
   left: 18px;
   bottom: 14px;
   z-index: 40;
-  pointer-events: none;
   opacity: 0.92;
   filter: drop-shadow(3px 3px 0 var(--shadow-col));
   animation: cat-bob 2.4s steps(2) infinite;
 }
-.pixel-cat svg { display: block; height: auto; }
+
+.pixel-cat--center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;                 /* behind content, above the page background */
+  opacity: 0.14;
+  animation: cat-sway 6s steps(2) infinite;
+}
 
 @keyframes cat-bob {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-4px); }
 }
+@keyframes cat-sway {
+  0%, 100% { transform: translate(-50%, -50%); }
+  50% { transform: translate(-50%, calc(-50% - 8px)); }
+}
 
 @media (max-width: 720px) {
-  .pixel-cat { width: 64px; left: 10px; bottom: 10px; }
-  .pixel-cat svg { width: 64px; }
+  .pixel-cat--corner svg { width: 64px; }
+  .pixel-cat--corner { left: 10px; bottom: 10px; }
+  .pixel-cat--center svg { width: 260px; }
 }
 
 /* ===========================================================================

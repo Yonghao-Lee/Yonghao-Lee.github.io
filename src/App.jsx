@@ -19,7 +19,8 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-      <PixelCat />
+      <PixelCat variant="center" width={420} />
+      <PixelCat variant="corner" width={92} />
     </>
   )
 }

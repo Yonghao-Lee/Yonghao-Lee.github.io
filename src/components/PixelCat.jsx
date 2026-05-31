@@ -29,7 +29,9 @@ const COLORS = {
 const COLS = ART[0].length
 const ROWS = ART.length
 
-export default function PixelCat() {
+// variant: 'corner' (small mascot, bottom-left) or 'center' (large faint
+// background watermark). width: rendered size in px.
+export default function PixelCat({ variant = 'corner', width = 92 }) {
   const pixels = []
   ART.forEach((row, y) => {
     for (let x = 0; x < row.length; x++) {
@@ -44,10 +46,10 @@ export default function PixelCat() {
   })
 
   return (
-    <div className="pixel-cat" aria-hidden="true">
+    <div className={`pixel-cat pixel-cat--${variant}`} aria-hidden="true">
       <svg
         viewBox={`0 0 ${COLS} ${ROWS}`}
-        width="92"
+        width={width}
         shapeRendering="crispEdges"
       >
         {pixels}

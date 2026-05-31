@@ -6,10 +6,7 @@ export default function Footer() {
       <div className="container footer__inner">
         <span>© {new Date().getFullYear()} {profile.name}</span>
         <span className="footer__built">
-          Built with React + Vite · assisted by{' '}
-          <a href="https://claude.com/claude-code" target="_blank" rel="noopener noreferrer">
-            Claude Code
-          </a>
+          Built with love <span className="footer__heart">♥</span> · React + Vite
         </span>
       </div>
     </footer>
