@@ -54,8 +54,54 @@ export const skills = [
   },
 ]
 
-// Your projects. The first one is your published PyDoom game.
+// Your projects. Edit, reorder, add, or remove cards freely.
 export const projects = [
+  {
+    title: 'Stereo Mosaicing',
+    blurb:
+      'Generates a stereo panoramic video from a single moving-camera sequence ' +
+      'using manifold mosaicing and Lucas–Kanade optical flow. Slicing narrow ' +
+      'vertical strips from different horizontal positions yields left/right-eye ' +
+      'views — a "wiggle stereo" 3D effect from one monocular camera.',
+    tags: ['Python', 'Computer Vision', 'Optical Flow', 'NumPy'],
+    link: 'https://github.com/Yonghao-Lee/Video-Mosaicing',
+    linkLabel: 'View on GitHub',
+    icon: '🎞️',
+  },
+  {
+    title: 'MNIST Representation Learning',
+    blurb:
+      'A study of supervised vs. unsupervised representation learning on MNIST: ' +
+      'a convolutional autoencoder, an end-to-end classifier, and a linear probe ' +
+      'over the frozen encoder — comparing what each objective keeps in the ' +
+      'latent space.',
+    tags: ['PyTorch', 'Deep Learning', 'Autoencoders', 'Repr. Learning'],
+    link: 'https://github.com/Yonghao-Lee/MNIST-Representation-Learning',
+    linkLabel: 'View on GitHub',
+    icon: '🧠',
+  },
+  {
+    title: 'MLP & Deepfake Detection',
+    blurb:
+      'Two ML tasks: a Multi-Layer Perceptron that predicts a city\'s country ' +
+      'from its latitude/longitude, and a ResNet18 CNN that classifies images ' +
+      'as real or AI-generated (deepfake detection).',
+    tags: ['PyTorch', 'CNN', 'ResNet18', 'Classification'],
+    link: 'https://github.com/Yonghao-Lee/MLP-Optimization-Deepfake-Detection',
+    linkLabel: 'View on GitHub',
+    icon: '🕵️',
+  },
+  {
+    title: 'Multi-Threaded MapReduce',
+    blurb:
+      'A thread-safe C++ implementation of the MapReduce paradigm. Processes ' +
+      'large datasets in parallel across Map → Shuffle → Reduce stages with ' +
+      'multithreading and careful synchronization.',
+    tags: ['C++', 'Multithreading', 'Concurrency', 'Systems'],
+    link: 'https://github.com/Yonghao-Lee/Multi-Threaded-MapReduce-Framework',
+    linkLabel: 'View on GitHub',
+    icon: '⚙️',
+  },
   {
     title: 'PyDoom',
     blurb:
@@ -65,18 +111,6 @@ export const projects = [
     tags: ['Python', 'pygame', 'Game Dev', 'Graphics'],
     link: 'https://github.com/Yonghao-Lee/pydoom',
     linkLabel: 'View on GitHub',
-    // Emoji shown as the project's icon (swap for any you like).
     icon: '🎮',
-  },
-  {
-    // EDIT ME: replace with a real project, or delete this entry.
-    title: 'Your Next Project',
-    blurb:
-      'Replace this card with another project — describe what it does, what ' +
-      'you built it with, and what you learned. Edit src/data.js.',
-    tags: ['Add', 'your', 'tags'],
-    link: 'https://github.com/Yonghao-Lee',
-    linkLabel: 'See more on GitHub',
-    icon: '🧪',
   },
 ]

@@ -339,6 +339,7 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
 }
 .card__link span { display: inline-block; transition: transform 0.1s; }
 .card__link:hover span { transform: translateX(5px); }
+.projects__more { margin-top: 40px; text-align: center; }
 
 /* ===========================================================================
    Contact

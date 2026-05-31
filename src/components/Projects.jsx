@@ -1,4 +1,4 @@
-import { projects } from '../data.js'
+import { projects, links } from '../data.js'
 
 export default function Projects() {
   return (
@@ -29,6 +29,18 @@ export default function Projects() {
             </article>
           ))}
         </div>
+        {links.github && (
+          <div className="projects__more">
+            <a
+              className="card__link"
+              href={links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              See all on GitHub <span aria-hidden="true">&gt;&gt;</span>
+            </a>
+          </div>
+        )}
       </div>
     </section>
   )
