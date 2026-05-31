@@ -20,3 +20,6 @@ npm-debug.log*
 
 # Local npm cache
 .npm-cache/
+
+# Local upload bundle for GoDaddy
+chicoryman-site.zip
