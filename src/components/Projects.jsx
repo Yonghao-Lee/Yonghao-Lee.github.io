@@ -23,7 +23,7 @@ export default function Projects() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {p.linkLabel || 'View project'} <span aria-hidden="true">→</span>
+                  {p.linkLabel || 'View project'} <span aria-hidden="true">&gt;&gt;</span>
                 </a>
               )}
             </article>
