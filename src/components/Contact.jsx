@@ -28,8 +28,8 @@ export default function Contact() {
       <div className="container contact">
         <h2 className="section__title">Get in touch</h2>
         <p className="contact__lead">
-          I'm always happy to talk about projects, collaboration, or
-          opportunities. Reach me here:
+          I'm always happy to talk shop — projects, collaboration, or new
+          opportunities. Got an interesting problem? Let's chat:
         </p>
         {profile.location && (
           <p className="contact__location">📍 {profile.location}</p>

@@ -6,21 +6,24 @@
 export const profile = {
   name: 'Yonghao Lee',
   // Short tagline under your name in the hero.
-  tagline: 'Computer Science student · Machine Learning & Software',
+  tagline: 'CS student · Machine Learning, Computer Vision & Signal Processing',
   // A sentence or two for the hero subtitle.
   intro:
-    'I build things with code — from machine learning and NLP experiments to ' +
-    'games and tools. Currently focused on ML, computer vision, and writing ' +
-    'clean, reliable software.',
+    'I turn math into pixels and signals — reconstructing 3D from a single ' +
+    'camera, catching deepfakes, and hiding watermarks above the range of ' +
+    'human hearing. I care about clean code and problems that make me think.',
   // Longer bio for the About section. Each string is its own paragraph.
   about: [
-    "Hi, I'm Yonghao — a Computer Science student with a strong interest in " +
-      'machine learning, natural language processing, and computer vision. ' +
-      'I enjoy taking ideas from a rough sketch all the way to something that ' +
-      'actually runs.',
-    'My coursework and side projects span classical ML, deep learning, NLP, ' +
-      'and 3D/vision work like stereo and feature matching. When I want a ' +
-      'break from research-style code, I build games and small tools for fun.',
+    "Hi, I'm Yonghao 👋 — a Computer Science student who lives where math " +
+      'meets code. Hand me a hard problem in vision, learning, or signal ' +
+      'processing and I am genuinely happy: stitching a stereo panorama from ' +
+      'one moving camera, teaching a network to spot fakes, or sneaking a ' +
+      "watermark into audio you can't even hear.",
+    'My work spans computer vision, deep learning, and digital signal ' +
+      'processing, with side quests into multithreaded C++ and graphics. ' +
+      "I sweat the details, write code I'd be glad to reread six months " +
+      "later, and I'm not above building a game engine from scratch just to " +
+      'see if I can.',
   ],
   // The location line in the contact section (optional — set to '' to hide).
   location: 'Israel',
@@ -50,7 +53,7 @@ export const skills = [
   },
   {
     group: 'Tools',
-    items: ['Git', 'Linux', 'pygame', 'React', 'Matplotlib'],
+    items: ['Git', 'Linux', 'Claude Code', 'pygame', 'React', 'Matplotlib'],
   },
 ]
 
@@ -103,14 +106,26 @@ export const projects = [
     icon: '⚙️',
   },
   {
-    title: 'PyDoom',
+    title: 'Audio DSP & Watermarking',
     blurb:
-      'A Doom-style raycasting first-person shooter in pure Python + pygame. ' +
-      'Procedural textures, depth-buffered enemy sprites, chasing demons, ' +
-      'hitscan shooting, and a full health/kill HUD.',
-    tags: ['Python', 'pygame', 'Game Dev', 'Graphics'],
-    link: 'https://github.com/Yonghao-Lee/pydoom',
+      'Digital signal processing on audio: time- and frequency-domain ' +
+      'watermarking (injecting energy at 20 kHz via FFT/IFFT, beyond human ' +
+      'hearing), spectrogram-based classification, and frequency-ridge ' +
+      'tracking for speed-up detection.',
+    tags: ['Python', 'DSP', 'FFT', 'Audio'],
+    link: 'https://github.com/Yonghao-Lee/Audio-Signal-Processing-Watermarking-and-Frequency-Analysis',
     linkLabel: 'View on GitHub',
-    icon: '🎮',
+    icon: '🔊',
+  },
+  {
+    title: 'Pyramids & Image Blending',
+    blurb:
+      'Laplacian pyramid blending and hybrid-image creation with NumPy & ' +
+      'SciPy — seamlessly merging images across multiple scales and building ' +
+      '"hybrid" images whose appearance changes with viewing distance.',
+    tags: ['Python', 'Computer Vision', 'NumPy', 'SciPy'],
+    link: 'https://github.com/Yonghao-Lee/Pyramids-and-Blending',
+    linkLabel: 'View on GitHub',
+    icon: '🖼️',
   },
 ]

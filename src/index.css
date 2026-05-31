@@ -378,6 +378,31 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
 .footer__built a { color: var(--green); }
 
 /* ===========================================================================
+   Pixel cat mascot — sits in the bottom-left corner with an idle bob.
+   =========================================================================== */
+.pixel-cat {
+  position: fixed;
+  left: 18px;
+  bottom: 14px;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.92;
+  filter: drop-shadow(3px 3px 0 var(--shadow-col));
+  animation: cat-bob 2.4s steps(2) infinite;
+}
+.pixel-cat svg { display: block; height: auto; }
+
+@keyframes cat-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@media (max-width: 720px) {
+  .pixel-cat { width: 64px; left: 10px; bottom: 10px; }
+  .pixel-cat svg { width: 64px; }
+}
+
+/* ===========================================================================
    Responsive
    =========================================================================== */
 @media (max-width: 720px) {

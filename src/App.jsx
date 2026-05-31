@@ -5,6 +5,7 @@ import Skills from './components/Skills.jsx'
 import Projects from './components/Projects.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import PixelCat from './components/PixelCat.jsx'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <PixelCat />
     </>
   )
 }
