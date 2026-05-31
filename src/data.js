@@ -6,32 +6,33 @@
 export const profile = {
   name: 'Yonghao Lee',
   // Short tagline under your name in the hero.
-  tagline: 'CS student · mathematics, Mesopotamia & cinema that refuses to explain itself',
+  tagline: 'Computer science student — into math, ancient Mesopotamia, and film',
   // A sentence or two for the hero subtitle.
   intro:
-    'By day I study computer science and chase the quiet certainty of ' +
-    'mathematics. By night I read dead languages, quarrel with Jared Diamond ' +
-    'in my head, and watch Kubrick until the symmetry starts to ache.',
+    "I'm a computer science student who likes math more than is strictly " +
+    'reasonable. Off the clock I read about ancient Mesopotamia, pick at a ' +
+    'little Sumerian, and watch a lot of Kubrick and Lynch.',
+  // A short epigraph shown above the About text. Each string is one line.
+  epigraph: [
+    'The rivers kept their names; the cities did not.',
+    "What's left is clay, and the patience of clay —",
+    'a few pressed marks where someone counted grain,',
+    'or a god, or the days until the rain.',
+  ],
   // Longer bio for the About section. Each string is its own paragraph.
   about: [
-    'I am a computer science student, which means I spend my days turning the ' +
-      'world into ones and zeros and my nights wondering whether the world ever ' +
-      'agreed to be turned into anything at all. Mathematics I love the way ' +
-      'some people love the sea — not because it is calm, but because it is ' +
-      'honest, and because somewhere beneath the surface something is always ' +
-      'looking back.',
-    "I keep a little Sumerian in my pocket, like a key to a house that no " +
-      'longer stands. Mesopotamia undoes me: the first cities, the first poems, ' +
-      'the first hands to press a reed into wet clay and decide that memory ' +
-      "should outlast the body. I don't believe, as Jared Diamond would have " +
-      'it, that geography quietly wrote our story in advance — I think people ' +
-      'wrote it, stubbornly, with their hands and their gods and their gorgeous ' +
-      'mistakes.',
-    "When I'm not coding or arguing with dead historians, I watch Kubrick for " +
-      'the symmetry and Lynch for the dreams that never quite resolve. ' +
-      "I'm drawn to things that feel like both at once — clean on the surface, " +
-      "strange underneath. If you have a problem shaped like that, we'll get " +
-      'along.',
+    'I came to computer science through math, and that is still the part I ' +
+      'enjoy most. I like problems with a clean idea underneath them; most of ' +
+      'my projects — computer vision, machine learning, a bit of signal ' +
+      'processing — are really just excuses to chase that.',
+    "Away from code, I read a lot about ancient Mesopotamia and I'm slowly " +
+      "learning some Sumerian. I've never quite agreed with Jared Diamond — " +
+      "I don't think geography quietly decided how civilizations turned out. " +
+      'People did, with their ideas and their mistakes, and that is the part ' +
+      'I find interesting.',
+    "When I'm not doing either, I'm usually watching Kubrick or Lynch. I have " +
+      'a weakness for films that look precise on the surface and stay a little ' +
+      'strange underneath.',
   ],
   // The location line in the contact section (optional — set to '' to hide).
   location: 'Israel',
