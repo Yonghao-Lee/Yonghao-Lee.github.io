@@ -6,24 +6,32 @@
 export const profile = {
   name: 'Yonghao Lee',
   // Short tagline under your name in the hero.
-  tagline: 'CS student · Machine Learning, Computer Vision & Signal Processing',
+  tagline: 'CS student · mathematics, Mesopotamia & cinema that refuses to explain itself',
   // A sentence or two for the hero subtitle.
   intro:
-    'I turn math into pixels and signals — reconstructing 3D from a single ' +
-    'camera, catching deepfakes, and hiding watermarks above the range of ' +
-    'human hearing. I care about clean code and problems that make me think.',
+    'By day I study computer science and chase the quiet certainty of ' +
+    'mathematics. By night I read dead languages, quarrel with Jared Diamond ' +
+    'in my head, and watch Kubrick until the symmetry starts to ache.',
   // Longer bio for the About section. Each string is its own paragraph.
   about: [
-    "Hi, I'm Yonghao 👋 — a Computer Science student who lives where math " +
-      'meets code. Hand me a hard problem in vision, learning, or signal ' +
-      'processing and I am genuinely happy: stitching a stereo panorama from ' +
-      'one moving camera, teaching a network to spot fakes, or sneaking a ' +
-      "watermark into audio you can't even hear.",
-    'My work spans computer vision, deep learning, and digital signal ' +
-      'processing, with side quests into multithreaded C++ and graphics. ' +
-      "I sweat the details, write code I'd be glad to reread six months " +
-      "later, and I'm not above building a game engine from scratch just to " +
-      'see if I can.',
+    'I am a computer science student, which means I spend my days turning the ' +
+      'world into ones and zeros and my nights wondering whether the world ever ' +
+      'agreed to be turned into anything at all. Mathematics I love the way ' +
+      'some people love the sea — not because it is calm, but because it is ' +
+      'honest, and because somewhere beneath the surface something is always ' +
+      'looking back.',
+    "I keep a little Sumerian in my pocket, like a key to a house that no " +
+      'longer stands. Mesopotamia undoes me: the first cities, the first poems, ' +
+      'the first hands to press a reed into wet clay and decide that memory ' +
+      "should outlast the body. I don't believe, as Jared Diamond would have " +
+      'it, that geography quietly wrote our story in advance — I think people ' +
+      'wrote it, stubbornly, with their hands and their gods and their gorgeous ' +
+      'mistakes.',
+    "When I'm not coding or arguing with dead historians, I watch Kubrick for " +
+      'the symmetry and Lynch for the dreams that never quite resolve. ' +
+      "I'm drawn to things that feel like both at once — clean on the surface, " +
+      "strange underneath. If you have a problem shaped like that, we'll get " +
+      'along.',
   ],
   // The location line in the contact section (optional — set to '' to hide).
   location: 'Israel',
