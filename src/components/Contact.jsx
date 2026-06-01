@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { profile, links } from '../data.js'
 
 // Inline SVG icons keep the site dependency-free.
@@ -16,6 +17,18 @@ const Icon = ({ name }) => {
 }
 
 export default function Contact() {
+  const [copied, setCopied] = useState(false)
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(links.email)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1600)
+    } catch (e) {
+      /* clipboard blocked (no permission / old browser) — the mailto link still works */
+    }
+  }
+
   const entries = [
     links.email && { name: 'email', label: links.email, href: `mailto:${links.email}` },
     links.github && { name: 'github', label: 'GitHub', href: links.github },
@@ -46,6 +59,16 @@ export default function Contact() {
                 <Icon name={e.name} />
                 <span>{e.label}</span>
               </a>
+              {e.name === 'email' && (
+                <button
+                  type="button"
+                  className="copy-btn"
+                  onClick={copyEmail}
+                  aria-label="Copy email address to clipboard"
+                >
+                  {copied ? 'Copied!' : 'Copy'}
+                </button>
+              )}
             </li>
           ))}
         </ul>
