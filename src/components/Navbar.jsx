@@ -11,12 +11,31 @@ const sections = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [active, setActive] = useState('')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
     onScroll()
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Highlight whichever section is currently centered in the viewport.
+  useEffect(() => {
+    const els = sections
+      .map(([id]) => document.getElementById(id))
+      .filter(Boolean)
+    if (!els.length || typeof IntersectionObserver === 'undefined') return
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id)
+        })
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 },
+    )
+    els.forEach((el) => obs.observe(el))
+    return () => obs.disconnect()
   }, [])
 
   // Use the first name as a compact logo.
@@ -41,7 +60,12 @@ export default function Navbar() {
 
         <nav className={`nav__links ${open ? 'is-open' : ''}`}>
           {sections.map(([id, label]) => (
-            <a key={id} href={`#${id}`} onClick={() => setOpen(false)}>
+            <a
+              key={id}
+              href={`#${id}`}
+              className={active === id ? 'is-active' : undefined}
+              onClick={() => setOpen(false)}
+            >
               {label}
             </a>
           ))}

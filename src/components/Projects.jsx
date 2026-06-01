@@ -1,4 +1,5 @@
 import { projects, links } from '../data.js'
+import Reveal from './Reveal.jsx'
 
 export default function Projects() {
   return (
@@ -6,8 +7,8 @@ export default function Projects() {
       <div className="container">
         <h2 className="section__title">Projects</h2>
         <div className="projects">
-          {projects.map((p) => (
-            <article key={p.title} className="card">
+          {projects.map((p, i) => (
+            <Reveal as="article" key={p.title} className="card" delay={(i % 3) * 90}>
               <div className="card__icon" aria-hidden="true">{p.icon}</div>
               <h3 className="card__title">{p.title}</h3>
               <p className="card__blurb">{p.blurb}</p>
@@ -26,7 +27,7 @@ export default function Projects() {
                   {p.linkLabel || 'View project'} <span aria-hidden="true">&gt;&gt;</span>
                 </a>
               )}
-            </article>
+            </Reveal>
           ))}
         </div>
         {links.github && (

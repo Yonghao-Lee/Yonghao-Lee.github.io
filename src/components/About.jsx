@@ -1,4 +1,5 @@
 import { profile } from '../data.js'
+import Reveal from './Reveal.jsx'
 
 export default function About() {
   return (
@@ -14,7 +15,7 @@ export default function About() {
             </blockquote>
           )}
           {profile.about.map((para, i) => (
-            <p key={i} className="about__para">{para}</p>
+            <Reveal as="p" key={i} className="about__para" delay={i * 90}>{para}</Reveal>
           ))}
         </div>
       </div>

@@ -455,4 +455,61 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { animation: none !important; }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ===========================================================================
+   Scroll reveal (fade + rise the first time an element scrolls into view)
+   =========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* ===========================================================================
+   Active nav link (highlights the section you're currently viewing)
+   =========================================================================== */
+.nav__links a { position: relative; }
+.nav__links a.is-active { color: var(--green); }
+.nav__links a.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 3px;
+  background: var(--green);
+}
+
+/* ===========================================================================
+   Project card hover polish (builds on the existing .card:hover lift)
+   =========================================================================== */
+.card__icon { transition: transform 0.12s, border-color 0.12s; }
+.card:hover .card__icon {
+  transform: translateY(-2px) rotate(-5deg);
+  border-color: var(--green);
+}
+.card .chip--sm { transition: color 0.12s, border-color 0.12s; }
+.card:hover .chip--sm { border-color: var(--accent); color: var(--text); }
+
+/* ===========================================================================
+   Interactive corner mascot (hover to perk up, click to pounce)
+   =========================================================================== */
+.pixel-cat--corner {
+  pointer-events: auto;
+  cursor: pointer;
+}
+.pixel-cat--corner svg { transition: transform 0.15s ease; }
+.pixel-cat--corner:hover svg { transform: scale(1.12) translateY(-3px) rotate(-3deg); }
+.pixel-cat--corner.is-pouncing { animation: cat-pounce 0.5s steps(6); }
+
+@keyframes cat-pounce {
+  0%   { transform: translateY(0); }
+  35%  { transform: translateY(-28px) scale(1.08); }
+  60%  { transform: translateY(-8px) scale(0.97); }
+  100% { transform: translateY(0); }
 }

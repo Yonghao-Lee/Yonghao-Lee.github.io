@@ -14,12 +14,7 @@ export const profile = {
     'Mesopotamia, know enough Sumerian to read a tablet, and listen to a good ' +
     'deal of Mahler.',
   // A short epigraph shown above the About text. Each string is one line.
-  epigraph: [
-    'The rivers kept their names; the cities did not.',
-    'What remains is clay, and the patience of clay —',
-    'a few pressed marks where someone counted grain,',
-    'or counted days, or waited for the rain.',
-  ],
+  epigraph: null,
   // Longer bio for the About section. Each string is its own paragraph.
   about: [
     'I came to computer science through math, and that is still the part I care ' +
