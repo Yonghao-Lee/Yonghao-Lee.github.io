@@ -50,15 +50,6 @@ export default function Contact() {
         <ul className="contact__links">
           {entries.map((e) => (
             <li key={e.name}>
-              <a
-                className="contact__link"
-                href={e.href}
-                target={e.href.startsWith('http') ? '_blank' : undefined}
-                rel="noopener noreferrer"
-              >
-                <Icon name={e.name} />
-                <span>{e.label}</span>
-              </a>
               {e.name === 'email' && (
                 <button
                   type="button"
@@ -69,6 +60,15 @@ export default function Contact() {
                   {copied ? 'Copied!' : 'Copy'}
                 </button>
               )}
+              <a
+                className="contact__link"
+                href={e.href}
+                target={e.href.startsWith('http') ? '_blank' : undefined}
+                rel="noopener noreferrer"
+              >
+                <Icon name={e.name} />
+                <span>{e.label}</span>
+              </a>
             </li>
           ))}
         </ul>
