@@ -479,26 +479,6 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
   border-color: var(--green);
   color: var(--green);
 }
-.contact__links li { display: inline-flex; align-items: center; gap: 8px; }
-.copy-btn {
-  font-family: var(--font-head);
-  font-size: 0.55rem;
-  text-transform: uppercase;
-  padding: 11px 12px;
-  background: var(--surface-2);
-  color: var(--muted);
-  border: 3px solid var(--border);
-  box-shadow: 3px 3px 0 var(--shadow-col);
-  cursor: pointer;
-  transition: transform 0.06s, box-shadow 0.06s, color 0.1s, border-color 0.1s;
-}
-.copy-btn:hover {
-  color: var(--green);
-  border-color: var(--green);
-  transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0 var(--shadow-col);
-}
-.copy-btn:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--shadow-col); }
 
 /* ===========================================================================
    Footer

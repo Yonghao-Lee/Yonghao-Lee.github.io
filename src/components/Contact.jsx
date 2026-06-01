@@ -48,29 +48,25 @@ export default function Contact() {
           <p className="contact__location">📍 {profile.location}</p>
         )}
         <ul className="contact__links">
-          {entries.map((e) => (
-            <li key={e.name}>
-              {e.name === 'email' && (
-                <button
-                  type="button"
-                  className="copy-btn"
-                  onClick={copyEmail}
-                  aria-label="Copy email address to clipboard"
+          {entries.map((e) => {
+            const isEmail = e.name === 'email'
+            return (
+              <li key={e.name}>
+                <a
+                  className="contact__link"
+                  href={e.href}
+                  target={e.href.startsWith('http') ? '_blank' : undefined}
+                  rel="noopener noreferrer"
+                  onClick={isEmail ? (ev) => { ev.preventDefault(); copyEmail() } : undefined}
+                  title={isEmail ? 'Click to copy email address' : undefined}
+                  aria-label={isEmail ? `Copy email address ${e.label}` : undefined}
                 >
-                  {copied ? 'Copied!' : 'Copy'}
-                </button>
-              )}
-              <a
-                className="contact__link"
-                href={e.href}
-                target={e.href.startsWith('http') ? '_blank' : undefined}
-                rel="noopener noreferrer"
-              >
-                <Icon name={e.name} />
-                <span>{e.label}</span>
-              </a>
-            </li>
-          ))}
+                  <Icon name={e.name} />
+                  <span>{isEmail && copied ? 'Copied!' : e.label}</span>
+                </a>
+              </li>
+            )
+          })}
         </ul>
       </div>
     </section>
