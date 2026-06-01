@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { profile } from '../data.js'
+import ThemeToggle from './ThemeToggle.jsx'
 
 const sections = [
   ['about', 'About'],
@@ -49,27 +50,31 @@ export default function Navbar() {
           <span className="nav__logo-text">{profile.name}</span>
         </a>
 
-        <button
-          className="nav__toggle"
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span /><span /><span />
-        </button>
+        <div className="nav__right">
+          <nav className={`nav__links ${open ? 'is-open' : ''}`}>
+            {sections.map(([id, label]) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                className={active === id ? 'is-active' : undefined}
+                onClick={() => setOpen(false)}
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
 
-        <nav className={`nav__links ${open ? 'is-open' : ''}`}>
-          {sections.map(([id, label]) => (
-            <a
-              key={id}
-              href={`#${id}`}
-              className={active === id ? 'is-active' : undefined}
-              onClick={() => setOpen(false)}
-            >
-              {label}
-            </a>
-          ))}
-        </nav>
+          <ThemeToggle />
+
+          <button
+            className="nav__toggle"
+            aria-label="Toggle menu"
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span /><span /><span />
+          </button>
+        </div>
       </div>
     </header>
   )

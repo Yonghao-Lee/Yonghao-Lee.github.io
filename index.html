@@ -8,6 +8,19 @@
     <meta name="theme-color" content="#181425" />
     <link rel="canonical" href="https://chicoryman.com/" />
 
+    <!-- Set the theme before paint so there's no flash of the wrong colours. -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme')
+          if (t !== 'light' && t !== 'dark') {
+            t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+          }
+          document.documentElement.setAttribute('data-theme', t)
+        } catch (e) {}
+      })()
+    </script>
+
     <!-- Open Graph (Facebook, LinkedIn, iMessage, Slack, …) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Yonghao Lee" />
