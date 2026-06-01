@@ -6,33 +6,34 @@
 export const profile = {
   name: 'Yonghao Lee',
   // Short tagline under your name in the hero.
-  tagline: 'Computer science student — into math, ancient Mesopotamia, and film',
+  tagline: 'Computer science student — math, machine learning, and signal processing',
   // A sentence or two for the hero subtitle.
   intro:
-    "I'm a computer science student who likes math more than is strictly " +
-    'reasonable. Off the clock I read about ancient Mesopotamia, pick at a ' +
-    'little Sumerian, and watch a lot of Kubrick and Lynch.',
+    "I'm a computer science student, and I spend most of my hours with math — " +
+    'more than is probably sensible. Away from it I read about ancient ' +
+    'Mesopotamia, know enough Sumerian to read a tablet, and listen to a good ' +
+    'deal of Mahler.',
   // A short epigraph shown above the About text. Each string is one line.
   epigraph: [
     'The rivers kept their names; the cities did not.',
-    "What's left is clay, and the patience of clay —",
+    'What remains is clay, and the patience of clay —',
     'a few pressed marks where someone counted grain,',
-    'or a god, or the days until the rain.',
+    'or counted days, or waited for the rain.',
   ],
   // Longer bio for the About section. Each string is its own paragraph.
   about: [
-    'I came to computer science through math, and that is still the part I ' +
-      'enjoy most. I like problems with a clean idea underneath them; most of ' +
-      'my projects — computer vision, machine learning, a bit of signal ' +
-      'processing — are really just excuses to chase that.',
-    "Away from code, I read a lot about ancient Mesopotamia and I'm slowly " +
-      "learning some Sumerian. I've never quite agreed with Jared Diamond — " +
-      "I don't think geography quietly decided how civilizations turned out. " +
-      'People did, with their ideas and their mistakes, and that is the part ' +
-      'I find interesting.',
-    "When I'm not doing either, I'm usually watching Kubrick or Lynch. I have " +
-      'a weakness for films that look precise on the surface and stay a little ' +
-      'strange underneath.',
+    'I came to computer science through math, and that is still the part I care ' +
+      'about most. I like problems with a single clean idea underneath them. ' +
+      'Most of what I build — computer vision, machine learning, a bit of signal ' +
+      'processing — is really an attempt to get at that idea.',
+    "Away from the keyboard, I read about ancient Mesopotamia, and I know enough " +
+      "Sumerian to work my way through a tablet. I've never been convinced by " +
+      "Jared Diamond; I don't think geography quietly decided how things turned " +
+      'out. People did, with their ideas and their mistakes, and that is the ' +
+      'part that holds my attention.',
+    'And there is almost always Mahler playing while I work — long symphonies ' +
+      'that take their time getting where they are going. I never quite get to ' +
+      'the end of them.',
   ],
   // The location line in the contact section (optional — set to '' to hide).
   location: 'Israel',
@@ -50,11 +51,11 @@ export const links = {
 export const skills = [
   {
     group: 'Languages',
-    items: ['Python', 'JavaScript', 'Java', 'C', 'SQL'],
+    items: ['Python', 'Java', 'C', 'C++', 'Go', 'MATLAB'],
   },
   {
     group: 'Machine Learning',
-    items: ['PyTorch', 'NumPy', 'scikit-learn', 'Pandas', 'Deep Learning'],
+    items: ['PyTorch', 'NumPy', 'scikit-learn', 'Pandas', 'spaCy', 'Deep Learning'],
   },
   {
     group: 'Domains',
@@ -62,7 +63,7 @@ export const skills = [
   },
   {
     group: 'Tools',
-    items: ['Git', 'Linux', 'Claude Code', 'pygame', 'React', 'Matplotlib'],
+    items: ['Git', 'Unix', 'Claude Code', 'Matplotlib'],
   },
 ]
 
