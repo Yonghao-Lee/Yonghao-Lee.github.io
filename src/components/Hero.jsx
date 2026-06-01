@@ -11,11 +11,7 @@ export default function Hero() {
         <p className="hero__intro">{profile.intro}</p>
         <div className="hero__cta">
           <a className="btn btn--primary" href="#projects">View my work</a>
-          {links.email && (
-            <a className="btn btn--ghost" href={`mailto:${links.email}`}>
-              Get in touch
-            </a>
-          )}
+          <a className="btn btn--ghost" href="#contact">Get in touch</a>
           {links.cv && (
             <a className="btn btn--ghost" href={links.cv} download>
               Download CV
