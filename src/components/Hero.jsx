@@ -16,6 +16,11 @@ export default function Hero() {
               Get in touch
             </a>
           )}
+          {links.cv && (
+            <a className="btn btn--ghost" href={links.cv} download>
+              Download CV
+            </a>
+          )}
         </div>
         <a className="hero__scroll" href="#about" aria-label="Scroll to about">
           <span />

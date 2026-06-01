@@ -104,6 +104,26 @@ body::after {
 
 a { color: var(--cyan); text-decoration: none; }
 
+/* Keyboard users can jump straight past the nav to the content. */
+.skip-link {
+  position: fixed;
+  top: 8px; left: 8px;
+  z-index: 200;
+  transform: translateY(-160%);
+  background: var(--green);
+  color: var(--bg);
+  font-family: var(--font-head);
+  font-size: 0.66rem;
+  padding: 12px 16px;
+  border: var(--pixel) solid var(--text);
+  box-shadow: 4px 4px 0 var(--shadow-col);
+  transition: transform 0.15s ease;
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* Clear focus ring for keyboard navigation (mouse clicks stay clean). */
+:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+
 img { max-width: 100%; display: block; image-rendering: pixelated; }
 
 .container {

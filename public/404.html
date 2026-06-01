@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="robots" content="noindex" />
+    <title>404 — Page not found · Yonghao Lee</title>
+
+    <!-- Match the site's light/dark choice. -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme')
+          if (t !== 'light' && t !== 'dark') {
+            t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+          }
+          document.documentElement.setAttribute('data-theme', t)
+        } catch (e) {}
+      })()
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #181425;
+        --surface: #2b2153;
+        --border: #7b6ad6;
+        --shadow-col: #0a0712;
+        --text: #f4f4f4;
+        --muted: #a59fd6;
+        --green: #5be37a;
+        --pink: #ff5d9e;
+        --yellow: #ffd166;
+        --pixel: 4px;
+        --font-head: 'Press Start 2P', monospace;
+        --font-body: 'VT323', 'Courier New', monospace;
+        color-scheme: dark;
+      }
+      :root[data-theme='light'] {
+        --bg: #efe9da;
+        --surface: #fffdf6;
+        --border: #4a3a8f;
+        --shadow-col: #2a2350;
+        --text: #211c33;
+        --muted: #5e5780;
+        --green: #178040;
+        --pink: #d63384;
+        --yellow: #b07700;
+        color-scheme: light;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 24px;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        font-size: 1.4rem;
+      }
+      .code {
+        font-family: var(--font-head);
+        font-size: clamp(2.5rem, 12vw, 6rem);
+        margin: 0;
+        color: var(--yellow);
+        text-shadow:
+          var(--pixel) var(--pixel) 0 var(--pink),
+          calc(var(--pixel) * 2) calc(var(--pixel) * 2) 0 var(--shadow-col);
+      }
+      .msg { font-family: var(--font-head); font-size: 0.8rem; color: var(--green); margin: 28px 0 10px; }
+      .sub { color: var(--muted); margin: 0 0 36px; }
+      .home {
+        display: inline-block;
+        font-family: var(--font-head);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 16px 26px;
+        background: var(--green);
+        color: var(--bg);
+        border: var(--pixel) solid var(--text);
+        box-shadow: 6px 6px 0 var(--shadow-col);
+        transition: transform 0.06s, box-shadow 0.06s;
+      }
+      .home:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--shadow-col); }
+      .home:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--shadow-col); }
+      .cat { margin-top: 40px; image-rendering: pixelated; opacity: 0.9; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="code">404</p>
+      <p class="msg">Page not found</p>
+      <p class="sub">This one slipped through a crack. Let's get you back.</p>
+      <a class="home" href="/">&lt;&lt; Back home</a>
+    </main>
+  </body>
+</html>

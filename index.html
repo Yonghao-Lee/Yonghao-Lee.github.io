@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="alternate icon" type="image/png" href="./favicon-32.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Yonghao Lee — personal portfolio. Computer Science, machine learning, and software projects." />
     <meta name="theme-color" content="#181425" />
@@ -45,6 +47,28 @@
       rel="stylesheet"
     />
     <title>Yonghao Lee — Portfolio</title>
+
+    <!-- Structured data: tells search engines / social this page is a person. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Yonghao Lee",
+        "url": "https://chicoryman.com/",
+        "jobTitle": "Computer Science Student",
+        "image": "https://chicoryman.com/og-image.png",
+        "sameAs": [
+          "https://github.com/Yonghao-Lee",
+          "https://www.linkedin.com/in/yonghao-lee-101a77221/"
+        ],
+        "knowsAbout": [
+          "Machine Learning",
+          "Computer Vision",
+          "Signal Processing",
+          "Mathematics"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

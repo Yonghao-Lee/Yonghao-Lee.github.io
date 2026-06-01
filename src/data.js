@@ -40,6 +40,8 @@ export const links = {
   // Add or remove as you like. Set a value to '' to hide that link.
   linkedin: 'https://www.linkedin.com/in/yonghao-lee-101a77221/',
   twitter: '',
+  // CV/résumé PDF served from /public. Set to '' to hide the download button.
+  cv: '/Yonghao-Lee-CV.pdf',
 }
 
 // Grouped skills. Add/remove groups and items freely.
