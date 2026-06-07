@@ -415,9 +415,16 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
    Projects
    =========================================================================== */
 .projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 28px;
+}
+/* Cards share an even base width but a capped max, so an incomplete last row
+   (e.g. a lone 7th card) centres instead of clinging to the left edge. */
+.projects .card {
+  flex: 1 1 300px;
+  max-width: 360px;
 }
 .card {
   background: var(--surface);
@@ -441,6 +448,20 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
   border: var(--pixel) solid var(--border);
   margin-bottom: 18px;
 }
+.card__media {
+  background: var(--bg);
+  border: var(--pixel) solid var(--border);
+  padding: 10px;
+  margin-bottom: 18px;
+  display: grid;
+  place-items: center;
+}
+.card__media img {
+  width: 150px;
+  height: 150px;
+  image-rendering: pixelated;
+}
+.card:hover .card__media { border-color: var(--green); }
 .card__title { font-family: var(--font-head); font-size: 0.95rem; margin: 0 0 14px; color: var(--yellow); }
 .card__blurb { color: var(--muted); margin: 0 0 18px; flex: 1; font-size: 1.35rem; }
 .card__tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0 0 20px; }

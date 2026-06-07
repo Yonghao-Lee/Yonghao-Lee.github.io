@@ -67,6 +67,20 @@ export const skills = [
 // Your projects. Edit, reorder, add, or remove cards freely.
 export const projects = [
   {
+    title: 'Differentiable Rendering',
+    blurb:
+      'A walk through modern differentiable rendering: neural fields (SIREN) ' +
+      'that fit a signal from its coordinates, sphere tracing and volume ' +
+      'rendering of implicit scenes, and a NeRF trained on the lego scene. ' +
+      'The thumbnail is my trained NeRF, rendered from a full orbit.',
+    tags: ['PyTorch', 'NeRF', 'Volume Rendering', 'Neural Fields'],
+    link: 'https://github.com/Yonghao-Lee/differentiable-rendering',
+    linkLabel: 'View on GitHub',
+    icon: '🧊',
+    media: import.meta.env.BASE_URL + 'spin.gif',
+    mediaAlt: 'A neural radiance field of the lego scene, rendered from a full orbit',
+  },
+  {
     title: 'Stereo Mosaicing',
     blurb:
       'Generates a stereo panoramic video from a single moving-camera sequence ' +

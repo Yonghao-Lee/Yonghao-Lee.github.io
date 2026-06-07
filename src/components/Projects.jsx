@@ -9,7 +9,13 @@ export default function Projects() {
         <div className="projects">
           {projects.map((p, i) => (
             <Reveal as="article" key={p.title} className="card" delay={(i % 3) * 90}>
-              <div className="card__icon" aria-hidden="true">{p.icon}</div>
+              {p.media ? (
+                <div className="card__media">
+                  <img src={p.media} alt={p.mediaAlt || p.title} loading="lazy" />
+                </div>
+              ) : (
+                <div className="card__icon" aria-hidden="true">{p.icon}</div>
+              )}
               <h3 className="card__title">{p.title}</h3>
               <p className="card__blurb">{p.blurb}</p>
               <ul className="card__tags">
