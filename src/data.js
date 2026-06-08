@@ -81,6 +81,21 @@ export const projects = [
     mediaAlt: 'A neural radiance field of the lego scene, rendered from a full orbit',
   },
   {
+    title: 'Multi-View 3D Reconstruction',
+    blurb:
+      'Classical multi-view geometry from scratch: camera calibration, the ' +
+      'normalized eight-point algorithm, essential-matrix pose recovery, image ' +
+      'rectification, and triangulating a 3D point cloud from two views. The ' +
+      'thumbnail is a point cloud reconstructed by the pipeline from two ' +
+      'synthetic camera views, then orbited.',
+    tags: ['Python', 'Computer Vision', 'Epipolar Geometry', 'Triangulation'],
+    link: 'https://github.com/Yonghao-Lee/multi-view-reconstruction',
+    linkLabel: 'View on GitHub',
+    icon: '📐',
+    media: import.meta.env.BASE_URL + 'mvr-spin.gif',
+    mediaAlt: 'A 3D point cloud reconstructed from two views, rendered from a full orbit',
+  },
+  {
     title: 'Stereo Mosaicing',
     blurb:
       'Generates a stereo panoramic video from a single moving-camera sequence ' +
