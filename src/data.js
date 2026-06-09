@@ -107,8 +107,9 @@ export const projects = [
     link: 'https://github.com/Yonghao-Lee/Video-Mosaicing',
     linkLabel: 'View on GitHub',
     icon: '🎞️',
-    media: import.meta.env.BASE_URL + 'mosaic-wiggle.mp4',
-    mediaAlt: 'A wiggle-stereo view of a riverside house, showing the 3D parallax effect',
+    media: import.meta.env.BASE_URL + 'mosaic-wide.mp4',
+    mediaAlt: 'A stitched riverside panorama with the wiggle-stereo 3D parallax effect',
+    mediaWide: true,
   },
   {
     title: 'MNIST Representation Learning',

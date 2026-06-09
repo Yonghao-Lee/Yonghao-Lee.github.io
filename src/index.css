@@ -466,6 +466,15 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
   height: 150px;
   object-fit: cover;
 }
+/* Wide media (e.g. a panorama): same height as the square thumbnails, but
+   stretched to fill the card width into a horizontal strip. */
+.card__media--wide img,
+.card__media--wide video {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  image-rendering: auto;
+}
 .card:hover .card__media { border-color: var(--green); }
 .card__title { font-family: var(--font-head); font-size: 0.95rem; margin: 0 0 14px; color: var(--yellow); }
 .card__blurb { color: var(--muted); margin: 0 0 18px; flex: 1; font-size: 1.35rem; }
