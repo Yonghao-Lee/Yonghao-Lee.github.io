@@ -69,10 +69,11 @@ export const projects = [
   {
     title: 'Differentiable Rendering',
     blurb:
-      'A walk through modern differentiable rendering: neural fields (SIREN) ' +
-      'that fit a signal from its coordinates, sphere tracing and volume ' +
-      'rendering of implicit scenes, and a NeRF trained on the lego scene. ' +
-      'The thumbnail is my trained NeRF, rendered from a full orbit.',
+      'Differentiable rendering built from scratch in PyTorch: neural fields ' +
+      '(SIREN) that fit a signal from its coordinates, sphere tracing and ' +
+      'volume rendering of implicit scenes, and a NeRF — a positional-encoded ' +
+      'coordinate MLP trained by volume rendering on the lego scene. The ' +
+      'thumbnail is my trained NeRF, rendered from a full orbit.',
     tags: ['PyTorch', 'NeRF', 'Volume Rendering', 'Neural Fields'],
     link: 'https://github.com/Yonghao-Lee/differentiable-rendering',
     linkLabel: 'View on GitHub',
