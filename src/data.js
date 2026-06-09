@@ -110,7 +110,7 @@ export const projects = [
     media: import.meta.env.BASE_URL + 'boat-stereo.mp4',
     mediaAlt: 'A stitched panoramic strip of a boat scene with the wiggle-stereo 3D parallax effect',
     mediaWide: true,
-    mediaRate: 0.5,
+    mediaRate: 0.7,
   },
   {
     title: 'MNIST Representation Learning',

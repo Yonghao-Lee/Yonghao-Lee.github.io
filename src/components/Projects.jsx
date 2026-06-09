@@ -8,7 +8,7 @@ export default function Projects() {
         <h2 className="section__title">Projects</h2>
         <div className="projects">
           {projects.map((p, i) => (
-            <Reveal as="article" key={p.title} className="card" delay={(i % 3) * 90}>
+            <Reveal as="article" key={p.title} className={p.mediaWide ? 'card card--wide' : 'card'} delay={(i % 3) * 90}>
               {p.media ? (
                 <div className={p.mediaWide ? 'card__media card__media--wide' : 'card__media'}>
                   {p.media.endsWith('.mp4') ? (
