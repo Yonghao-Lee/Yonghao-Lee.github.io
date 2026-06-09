@@ -426,11 +426,6 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
   flex: 1 1 300px;
   max-width: 360px;
 }
-/* A card with wide media (panorama strip) gets extra room to show it bigger. */
-.projects .card--wide {
-  flex: 1 1 480px;
-  max-width: 520px;
-}
 .card {
   background: var(--surface);
   border: var(--pixel) solid var(--border);
@@ -479,6 +474,13 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
   height: auto;
   object-fit: contain;
   image-rendering: auto;
+}
+/* Let the panorama strip break out of the card's padding so the video itself
+   renders bigger while the card stays the same size as the others. */
+.card--wide .card__media {
+  margin-left: -26px;
+  margin-right: -26px;
+  padding: 6px;
 }
 .card:hover .card__media { border-color: var(--green); }
 .card__title { font-family: var(--font-head); font-size: 0.95rem; margin: 0 0 14px; color: var(--yellow); }
