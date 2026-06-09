@@ -461,13 +461,10 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
   height: 150px;
   image-rendering: pixelated;
 }
-.card__media--wide {
-  align-self: stretch;
-}
-.card__media--wide img {
-  width: 100%;
-  height: auto;
-  image-rendering: auto;
+.card__media video {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
 }
 .card:hover .card__media { border-color: var(--green); }
 .card__title { font-family: var(--font-head); font-size: 0.95rem; margin: 0 0 14px; color: var(--yellow); }

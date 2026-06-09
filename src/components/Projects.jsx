@@ -10,8 +10,19 @@ export default function Projects() {
           {projects.map((p, i) => (
             <Reveal as="article" key={p.title} className="card" delay={(i % 3) * 90}>
               {p.media ? (
-                <div className={p.mediaWide ? 'card__media card__media--wide' : 'card__media'}>
-                  <img src={p.media} alt={p.mediaAlt || p.title} loading="lazy" />
+                <div className="card__media">
+                  {p.media.endsWith('.mp4') ? (
+                    <video
+                      src={p.media}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      aria-label={p.mediaAlt || p.title}
+                    />
+                  ) : (
+                    <img src={p.media} alt={p.mediaAlt || p.title} loading="lazy" />
+                  )}
                 </div>
               ) : (
                 <div className="card__icon" aria-hidden="true">{p.icon}</div>
