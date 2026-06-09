@@ -110,6 +110,7 @@ export const projects = [
     media: import.meta.env.BASE_URL + 'mosaic-wide.mp4',
     mediaAlt: 'A stitched riverside panorama with the wiggle-stereo 3D parallax effect',
     mediaWide: true,
+    mediaRate: 0.5,
   },
   {
     title: 'MNIST Representation Learning',

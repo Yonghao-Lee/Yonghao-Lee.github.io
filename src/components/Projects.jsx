@@ -19,6 +19,9 @@ export default function Projects() {
                       loop
                       playsInline
                       aria-label={p.mediaAlt || p.title}
+                      ref={(el) => {
+                        if (el && p.mediaRate) el.playbackRate = p.mediaRate
+                      }}
                     />
                   ) : (
                     <img src={p.media} alt={p.mediaAlt || p.title} loading="lazy" />
