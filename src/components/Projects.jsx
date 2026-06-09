@@ -10,7 +10,7 @@ export default function Projects() {
           {projects.map((p, i) => (
             <Reveal as="article" key={p.title} className="card" delay={(i % 3) * 90}>
               {p.media ? (
-                <div className="card__media">
+                <div className={p.mediaWide ? 'card__media card__media--wide' : 'card__media'}>
                   <img src={p.media} alt={p.mediaAlt || p.title} loading="lazy" />
                 </div>
               ) : (
