@@ -1,0 +1,141 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% "ModernCV" CV - Final Version
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt,a4paper,sans]{moderncv}
+
+% CV Theme and Color
+\moderncvstyle{classic}
+\moderncvcolor{blue}
+
+% Packages and Geometry
+\usepackage[top=1.2cm, bottom=1.2cm, left=1.2cm, right=1.2cm]{geometry}
+\setlength{\hintscolumnwidth}{3.2cm}
+% NOTE: Removed \usepackage{hyperref} because moderncv loads it automatically!
+
+% Personal Information
+\firstname{Yonghao}
+\familyname{Lee}
+\address{}{Jerusalem, Israel}
+\mobile{(+972) 50 3970958}
+\email{yonghao.lee.il@gmail.com}
+
+% --- Clickable Links using \href ---
+\extrainfo{
+    \href{https://github.com/Yonghao-Lee}{GitHub: github.com/Yonghao-Lee} \\
+    \href{https://www.linkedin.com/in/yonghao-lee-101a77221/}{LinkedIn: linkedin.com/in/yonghao-lee}\\
+    \href{http://chicoryman.com/}{Personal Website: chicoryman.com}
+}
+\begin{document}
+
+% Title
+\makecvtitle
+
+%----------------------------------------------------------------------------------------
+% EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\cventry{2023--2027}{B.Sc. in Computer Science}{The Hebrew University of Jerusalem}{}{}{}
+
+%----------------------------------------------------------------------------------------
+% EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Experience}
+
+\cventry{Nov 2021--Jan 2026}{Cyber Threat Analyst}{BrandShield Ltd.}{}{}{
+\begin{itemize}
+    \item Monitored and analyzed digital ecosystems to detect phishing sites, brand impersonations, and malicious infrastructure.
+    \item Conducted deep-dive investigations into online fraud patterns and executed legal and technical takedown procedures.
+\end{itemize}
+}
+
+\cventry{Aug 2019--Jun 2021}{Sergeant}{Israel Defense Forces (Armored Corps)}{}{}{
+\begin{itemize}
+    \item Received multiple outstanding soldier awards, including formal recognition from the Head of Southern Command (Aluf Pikud Darom) for exemplary performance.
+\end{itemize}
+}
+
+%----------------------------------------------------------------------------------------
+% SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Skills}
+
+\cvitem{Programming}{Python, C, C++, Java, C, Go, MATLAB, Unix, Web development}
+\cvitem{Tools \& AI}{PyTorch, SpaCy, Git, LaTeX, Excel, Claude Code}
+
+%----------------------------------------------------------------------------------------
+% PROJECTS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Projects}
+\cventry{2025}{\href{https://github.com/Yonghao-Lee/differentiable-rendering}{Differentiable Rendering \& Neural Radiance Fields}}{}{}{}{
+\begin{itemize}
+    \item From-scratch differentiable rendering in \textbf{PyTorch}: SIREN neural fields, sphere tracing, volume rendering.
+    \item Trained a \textbf{NeRF} (positional-encoded MLP) by volume rendering; re-renders the scene from novel viewpoints.
+\end{itemize}
+}
+\cventry{2025}{\href{https://github.com/Yonghao-Lee/multi-view-reconstruction}{Multi-View 3D Reconstruction}}{}{}{}{
+\begin{itemize}
+    \item From-scratch structure-from-motion in \textbf{Python}/\textbf{NumPy}: eight-point algorithm, essential-matrix pose recovery.
+    \item Triangulated a 3D point cloud from two calibrated views, with image rectification.
+\end{itemize}
+}
+\cventry{2024}{\href{https://github.com/Yonghao-Lee/Multi-Threaded-MapReduce-Framework}{Multi-Threaded MapReduce Framework}}{}{}{}{
+\begin{itemize}
+    \item Designed and implemented a robust MapReduce framework in \textbf{C++} to process large datasets concurrently.
+    \item Engineered thread-safe job queues and synchronized worker threads using mutexes and condition variables to prevent race conditions.
+\end{itemize}
+}
+
+%----------------------------------------------------------------------------------------
+% VOLUNTEERING SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Programs and Initiatives}
+
+\cventry{Nov 2022--Jun 2023}{\href{https://www.heseg.com/}{Project Lead \& Social Entrepreneurship Fellow}}{Heseg Foundation}{}{}{
+\begin{itemize}
+    \item Led a team of 3 for a full year to initiate and execute a commercial food waste reduction program.
+    \item Onboarded and managed partnerships with local restaurants, diners, and bakeries to adopt the initiative.
+    \item Managed project operations, strategy, and waste control implementation as a Heseg Foundation Fellow.
+\end{itemize}
+}
+
+\cventry{Oct 2023--Present}{\href{https://achgadol.org/en/}{Volunteer Mentor}}{Ach Gadol (Big Brother) for Lone Soldiers}{}{}{
+\begin{itemize}
+    \item Provide 1:1 personal guidance and crisis management to active-duty IDF Lone Soldiers.
+    \item Help soldiers navigate complex military and civilian systems to secure housing, financial aid, and legal rights.
+\end{itemize}
+}
+
+\cventry{Oct 2023--Present}{\href{https://www.telfed.org.il/}{Volunteer}}{South African Zionist Federation}{}{}{
+\begin{itemize}
+    \item Assist new Olim (immigrants) with cultural adaptation, networking, and integration into Israeli society.
+    \item Guide newcomers through local administrative processes, housing logistics, and community support resources.
+\end{itemize}
+}
+
+%----------------------------------------------------------------------------------------
+% AWARDS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Honors \& Awards}
+
+\cvitem{2020}{General's Outstanding Award, Southern Command (IDF)}
+\cvitem{2020}{Outstanding Award, 460th Brigade (IDF)}
+\cvitem{2020}{Outstanding Award, 9th Battalion (IDF)}
+
+%----------------------------------------------------------------------------------------
+% CERTIFICATIONS & LANGUAGES
+%----------------------------------------------------------------------------------------
+
+\section{Certifications \& Languages}
+
+\cventry{2023}{\href{https://www.freecodecamp.org/certification/Almdudler/responsive-web-design}{Responsive Web Design Developer Certification}}{freeCodeCamp}{}{}{}
+\cvitem{Languages}{English (Native), Chinese (Native), Hebrew (Fluent), Japanese (Conversational)}
+
+\end{document}
