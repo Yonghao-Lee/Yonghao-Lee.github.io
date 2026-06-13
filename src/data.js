@@ -102,13 +102,14 @@ export const projects = [
       'Generates a stereo panoramic video from a single moving-camera sequence ' +
       'using manifold mosaicing and Lucas–Kanade optical flow. Slicing narrow ' +
       'vertical strips from different horizontal positions yields left/right-eye ' +
-      'views — a "wiggle stereo" 3D effect from one monocular camera.',
+      'views — a "wiggle stereo" 3D effect from one monocular camera. The ' +
+      'thumbnail is the pipeline run on a synthetic two-depth-layer scene.',
     tags: ['Python', 'Computer Vision', 'Optical Flow', 'NumPy'],
     link: 'https://github.com/Yonghao-Lee/Video-Mosaicing',
     linkLabel: 'View on GitHub',
     icon: '🎞️',
-    media: import.meta.env.BASE_URL + 'boat-stereo.mp4',
-    mediaAlt: 'A stitched panoramic strip of a boat scene with the wiggle-stereo 3D parallax effect',
+    media: import.meta.env.BASE_URL + 'stereo-mosaic.mp4',
+    mediaAlt: 'A stitched panorama of a synthetic depth-layered scene showing the wiggle-stereo parallax effect',
     mediaWide: true,
     mediaRate: 0.7,
   },
@@ -134,6 +135,18 @@ export const projects = [
     link: 'https://github.com/Yonghao-Lee/MLP-Optimization-Deepfake-Detection',
     linkLabel: 'View on GitHub',
     icon: '🕵️',
+  },
+  {
+    title: 'MHC-I Peptide Binding',
+    blurb:
+      'A PyTorch MLP that predicts which HLA class-I allele will present a given ' +
+      '9-mer peptide. Includes an epitope-discovery demo that scans the ' +
+      'SARS-CoV-2 Spike protein for high-affinity binders the immune system ' +
+      'could target.',
+    tags: ['PyTorch', 'Deep Learning', 'Bioinformatics', 'Immunology'],
+    link: 'https://github.com/Yonghao-Lee/MHC-Class-I-Peptide-Allele-Classifier',
+    linkLabel: 'View on GitHub',
+    icon: '🧬',
   },
   {
     title: 'Multi-Threaded MapReduce',
