@@ -6,6 +6,7 @@ import Projects from './components/Projects.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import PixelCat from './components/PixelCat.jsx'
+import PixelAlmdudler from './components/PixelAlmdudler.jsx'
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
       <Footer />
       <PixelCat variant="center" width={420} />
       <PixelCat variant="corner" width={92} />
+      <PixelAlmdudler width={64} />
     </>
   )
 }

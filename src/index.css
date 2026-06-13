@@ -659,6 +659,36 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
 }
 
 /* ===========================================================================
+   Pixel-art Almdudler bottle mascot (bottom-right; hover to perk, click to fizz)
+   =========================================================================== */
+.pixel-almdudler {
+  position: fixed;
+  right: 18px;
+  bottom: 14px;
+  z-index: 40;
+  opacity: 0.92;
+  pointer-events: auto;
+  cursor: pointer;
+  filter: drop-shadow(3px 3px 0 var(--shadow-col));
+  animation: cat-bob 2.6s steps(2) infinite;
+}
+.pixel-almdudler svg { display: block; height: auto; transition: transform 0.15s ease; }
+.pixel-almdudler:hover svg { transform: scale(1.1) translateY(-3px) rotate(3deg); }
+.pixel-almdudler.is-fizzing { animation: almd-fizz 0.5s steps(6); }
+
+@keyframes almd-fizz {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  20%      { transform: translateY(-2px) rotate(-5deg); }
+  50%      { transform: translateY(-12px) rotate(4deg); }
+  80%      { transform: translateY(-2px) rotate(5deg); }
+}
+
+@media (max-width: 720px) {
+  .pixel-almdudler svg { width: 46px; }
+  .pixel-almdudler { right: 10px; bottom: 10px; }
+}
+
+/* ===========================================================================
    Theme toggle (light / dark switch in the navbar)
    =========================================================================== */
 .nav__right { display: flex; align-items: center; gap: 18px; }
