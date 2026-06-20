@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { profile } from '../data.js'
 import ThemeToggle from './ThemeToggle.jsx'
+import PixelLion from './PixelLion.jsx'
 
 const sections = [
   ['about', 'About'],
@@ -40,14 +41,11 @@ export default function Navbar() {
     return () => obs.disconnect()
   }, [])
 
-  // Use the first name as a compact logo.
-  const initials = profile.name.split(' ').map((w) => w[0]).join('')
-
   return (
     <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
       <div className="nav__inner">
         <a href="#top" className="nav__logo" onClick={() => setOpen(false)}>
-          <span className="nav__logo-mark">{initials}</span>
+          <PixelLion className="nav__logo-mark" width={40} />
           <span className="nav__logo-text">{profile.name}</span>
         </a>
 

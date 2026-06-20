@@ -6,7 +6,6 @@ import Projects from './components/Projects.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import PixelCat from './components/PixelCat.jsx'
-import PixelLion from './components/PixelLion.jsx'
 import ChatWidget from './components/ChatWidget.jsx'
 import RunnerGame from './components/RunnerGame.jsx'
 
@@ -30,7 +29,6 @@ export default function App() {
       </main>
       <Footer />
       <PixelCat variant="center" width={420} />
-      <PixelLion />
       <ChatWidget />
     </>
   )
