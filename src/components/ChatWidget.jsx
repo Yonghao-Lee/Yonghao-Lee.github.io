@@ -15,6 +15,8 @@ const SUGGESTIONS = [
   "What's he into outside of code?",
 ]
 
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+
 // Turn bare URLs / emails in bot text into safe links.
 function renderText(text) {
   const re = /(https?:\/\/[^\s]+|[\w.+-]+@[\w-]+\.[\w.-]+)/g
@@ -58,15 +60,18 @@ export default function ChatWidget() {
     if (open) inputRef.current?.focus()
   }, [open])
 
-  async function send(text) {
+  async function send(text, attempt = 0) {
     const q = text.trim()
-    if (!q || busy) return
+    // On a retry we're already "busy" by design, so only the first call guards.
+    if (!q || (busy && attempt === 0)) return
 
-    setShowSuggest(false)
-    setInput('')
-    setMessages((m) => [...m, { role: 'user', text: q }, { role: 'bot', text: '', pending: true }])
-    historyRef.current.push({ role: 'user', content: q })
-    setBusy(true)
+    if (attempt === 0) {
+      setShowSuggest(false)
+      setInput('')
+      setMessages((m) => [...m, { role: 'user', text: q }, { role: 'bot', text: '', pending: true }])
+      historyRef.current.push({ role: 'user', content: q })
+      setBusy(true)
+    }
 
     try {
       const res = await fetch(API, {
@@ -76,11 +81,21 @@ export default function ChatWidget() {
       })
 
       if (!res.ok || !res.body) {
-        let msg = 'The bot is unavailable right now.'
+        let data = {}
         try {
-          msg = (await res.json()).error || msg
+          data = await res.json()
         } catch {}
-        failLast(msg)
+        // 429 = the shared free-tier quota is momentarily exhausted. Wait the
+        // hint the server gives us and retry a couple of times before giving up,
+        // so a bit of traffic doesn't look like a dead bot.
+        if (res.status === 429 && attempt < 2) {
+          const wait = Math.min(data.retryAfterMs || 6000, 15000)
+          updateLast("One sec — lots of questions right now, let me try again…", false)
+          await sleep(wait)
+          await send(q, attempt + 1)
+          return
+        }
+        failLast(data.error || 'The bot is unavailable right now.')
         historyRef.current.pop()
         return
       }
@@ -123,8 +138,11 @@ export default function ChatWidget() {
       failLast('Something went wrong reaching the bot. Please try again.')
       historyRef.current.pop()
     } finally {
-      setBusy(false)
-      inputRef.current?.focus()
+      // Only the original call owns the busy flag; retries run nested inside it.
+      if (attempt === 0) {
+        setBusy(false)
+        inputRef.current?.focus()
+      }
     }
   }
 
