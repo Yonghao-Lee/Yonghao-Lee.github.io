@@ -7,6 +7,7 @@ const sections = [
   ['skills', 'Skills'],
   ['projects', 'Projects'],
   ['contact', 'Contact'],
+  ['play', 'Play'],
 ]
 
 export default function Navbar() {

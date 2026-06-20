@@ -1,0 +1,32 @@
+/* Endless-runner mini-game — chunky pixel screen that matches the site. */
+.runner {
+  max-width: 620px;
+}
+
+.runner__screen {
+  background: var(--bg);
+  border: var(--pixel) solid var(--border);
+  box-shadow: 8px 8px 0 var(--shadow-col);
+  padding: 8px;
+  line-height: 0; /* kill inline-canvas gap */
+  cursor: pointer;
+  transition: border-color 0.1s;
+}
+.runner__screen:focus-visible {
+  outline: none;
+  border-color: var(--green);
+}
+
+.runner__canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  touch-action: manipulation; /* no double-tap zoom while playing */
+}
+
+.runner__hint {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 1.15rem;
+}

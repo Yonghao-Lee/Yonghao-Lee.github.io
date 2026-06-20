@@ -8,6 +8,7 @@ import Footer from './components/Footer.jsx'
 import PixelCat from './components/PixelCat.jsx'
 import PixelAlmdudler from './components/PixelAlmdudler.jsx'
 import ChatWidget from './components/ChatWidget.jsx'
+import RunnerGame from './components/RunnerGame.jsx'
 
 export default function App() {
   return (
@@ -20,6 +21,12 @@ export default function App() {
         <Skills />
         <Projects />
         <Contact />
+        <section id="play" className="section">
+          <div className="container">
+            <h2 className="section__title">Take a break</h2>
+            <RunnerGame />
+          </div>
+        </section>
       </main>
       <Footer />
       <PixelCat variant="center" width={420} />
