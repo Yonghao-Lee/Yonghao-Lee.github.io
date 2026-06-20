@@ -40,7 +40,7 @@ const MORTAR = '#2b5ea6' // lighter lines hinting at courses of brick
 const COLS = Math.max(...ART.map((r) => r.length))
 const ROWS = ART.length
 
-export default function PixelLion({ width = 300 }) {
+export default function PixelLion({ width = 132 }) {
   const [roar, setRoar] = useState(false)
 
   const pixels = []
@@ -68,20 +68,17 @@ export default function PixelLion({ width = 300 }) {
   }
 
   return (
-    <figure className={`pixel-lion${roar ? ' is-roaring' : ''}`}>
-      <svg
-        viewBox={`0 0 ${COLS} ${ROWS}`}
-        width={width}
-        shapeRendering="crispEdges"
-        role="img"
-        aria-label="Pixel-art striding lion in the style of the Ishtar Gate of Babylon"
-        onClick={trigger}
-      >
+    <button
+      type="button"
+      className={`pixel-lion${roar ? ' is-roaring' : ''}`}
+      onClick={trigger}
+      aria-label="Striding lion from the Ishtar Gate of Babylon — click for a little roar"
+    >
+      <svg viewBox={`0 0 ${COLS} ${ROWS}`} width={width} shapeRendering="crispEdges" aria-hidden="true">
         <rect x="0" y="0" width={COLS} height={ROWS} fill={TILE} />
         {courses}
         {pixels}
       </svg>
-      <figcaption className="pixel-lion__cap">Striding Lion · Ishtar Gate, Babylon</figcaption>
-    </figure>
+    </button>
   )
 }

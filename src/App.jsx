@@ -25,12 +25,12 @@ export default function App() {
           <div className="container">
             <h2 className="section__title">Take a break</h2>
             <RunnerGame />
-            <PixelLion />
           </div>
         </section>
       </main>
       <Footer />
       <PixelCat variant="center" width={420} />
+      <PixelLion />
       <ChatWidget />
     </>
   )

@@ -689,41 +689,41 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
 }
 
 /* ===========================================================================
-   Pixel-art striding lion (Ishtar Gate of Babylon) — a framed art tile in the
-   "Take a break" section. Click it for a little roar.
+   Pixel-art striding lion (Ishtar Gate of Babylon) — a fixed mascot pinned to
+   the bottom-left corner that stays put while scrolling. Click it for a roar.
    =========================================================================== */
 .pixel-lion {
-  margin: 28px auto 0;
-  width: max-content;
-  max-width: 100%;
-  text-align: center;
+  position: fixed;
+  left: 18px;
+  bottom: 14px;
+  z-index: 40;
+  padding: 0;
+  border: var(--pixel) solid var(--border);
+  background: none;
+  line-height: 0;
+  cursor: pointer;
+  opacity: 0.95;
+  box-shadow: 6px 6px 0 var(--shadow-col);
+  animation: cat-bob 2.6s steps(2) infinite;
 }
 .pixel-lion svg {
   display: block;
-  max-width: 100%;
   height: auto;
-  border: var(--pixel) solid var(--border);
-  box-shadow: 8px 8px 0 var(--shadow-col);
-  cursor: pointer;
   transition: transform 0.15s ease;
 }
-.pixel-lion:hover svg { transform: translateY(-2px); }
-.pixel-lion.is-roaring svg { animation: lion-roar 0.5s steps(6); }
-.pixel-lion__cap {
-  margin-top: 12px;
-  font-size: 0.82rem;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-}
+.pixel-lion:hover svg { transform: scale(1.06) translateY(-2px); }
+.pixel-lion:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
+.pixel-lion.is-roaring { animation: lion-roar 0.5s steps(6); }
 
 @keyframes lion-roar {
   0%, 100% { transform: translateY(0) rotate(0); }
-  25%      { transform: translateY(-3px) scale(1.03) rotate(-1deg); }
+  25%      { transform: translateY(-4px) scale(1.04) rotate(-1deg); }
   60%      { transform: translateY(-1px) scale(1.02) rotate(1deg); }
 }
 
 @media (max-width: 720px) {
-  .pixel-lion svg { width: 240px; }
+  .pixel-lion svg { width: 104px; }
+  .pixel-lion { left: 10px; bottom: 10px; }
 }
 
 /* ===========================================================================
