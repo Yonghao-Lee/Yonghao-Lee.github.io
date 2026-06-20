@@ -9,7 +9,7 @@
 .cw-launch {
   position: fixed;
   right: 18px;
-  bottom: 92px;
+  bottom: 18px;
   z-index: 1000;
   display: inline-flex;
   align-items: center;
@@ -291,7 +291,7 @@
   }
   .cw-launch {
     right: 12px;
-    bottom: 86px;
+    bottom: 18px;
   }
 }
 

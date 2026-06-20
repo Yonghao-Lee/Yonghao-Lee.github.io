@@ -23,7 +23,6 @@ export default function App() {
       </main>
       <Footer />
       <PixelCat variant="center" width={420} />
-      <PixelCat variant="corner" width={92} />
       <PixelAlmdudler width={64} />
       <ChatWidget />
     </>

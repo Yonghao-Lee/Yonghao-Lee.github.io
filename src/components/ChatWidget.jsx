@@ -39,7 +39,7 @@ function renderText(text) {
 }
 
 export default function ChatWidget() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
   const [messages, setMessages] = useState([{ role: 'bot', text: GREETING }])
   const [input, setInput] = useState('')
   const [busy, setBusy] = useState(false)
