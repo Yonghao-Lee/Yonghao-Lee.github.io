@@ -7,6 +7,7 @@ import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import PixelCat from './components/PixelCat.jsx'
 import PixelAlmdudler from './components/PixelAlmdudler.jsx'
+import ChatWidget from './components/ChatWidget.jsx'
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
       <PixelCat variant="center" width={420} />
       <PixelCat variant="corner" width={92} />
       <PixelAlmdudler width={64} />
+      <ChatWidget />
     </>
   )
 }
