@@ -67,6 +67,23 @@ export const skills = [
 // Your projects. Edit, reorder, add, or remove cards freely.
 export const projects = [
   {
+    title: 'Score Distillation: SDS & PDS',
+    blurb:
+      'Text-to-image generation and editing by distilling a pretrained Stable ' +
+      'Diffusion model into a single optimizable latent — no reverse diffusion ' +
+      'sampling. Implements Score Distillation Sampling (DreamFusion) to generate ' +
+      'images from prompts, and Posterior Distillation Sampling to edit a source ' +
+      'image toward a target prompt by matching stochastic latents. The thumbnail ' +
+      'shows three source → edited pairs produced by PDS.',
+    tags: ['PyTorch', 'Diffusion Models', 'Stable Diffusion', 'SDS / PDS'],
+    link: 'https://github.com/Yonghao-Lee/sds-pds-2d',
+    linkLabel: 'View on GitHub',
+    icon: '🎨',
+    media: import.meta.env.BASE_URL + 'sds-pds-thumb.jpg',
+    mediaAlt: 'Three source-to-edited image pairs from Posterior Distillation Sampling: a cabin regrown with flowers, a castle under a rainbow, and a red bus turned into a yellow school bus',
+    mediaWide: true,
+  },
+  {
     title: 'Differentiable Rendering',
     blurb:
       'Differentiable rendering built from scratch in PyTorch: neural fields ' +
