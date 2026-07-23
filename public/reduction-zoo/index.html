@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#181425">
-<meta name="description" content="Reduction Zoo — an interactive NP-complete reduction visualizer. Watch a satisfying assignment become an independent set.">
-<title>Reduction Zoo — 3-SAT → Independent Set</title>
+<meta name="description" content="Reduction Zoo — step a certificate through the whole NP-complete chain: SAT to 3-SAT to Independent Set to Vertex Cover to Clique.">
+<title>Reduction Zoo — SAT → 3-SAT → IS → VC → Clique</title>
 <script>
   (function(){try{var t=localStorage.getItem('theme');
     if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}
@@ -21,129 +21,132 @@
     --bg:#181425; --bg-alt:#1f1838; --surface:#2b2153; --surface-2:#3a2c6e;
     --border:#7b6ad6; --shadow-col:#0a0712; --text:#f4f4f4; --muted:#a59fd6;
     --green:#5be37a; --pink:#ff5d9e; --cyan:#5cc8ff; --yellow:#ffd166;
-    --on-accent:#12101c;
-    --pixel:4px; --max-width:1080px;
+    --on-accent:#12101c; --pixel:4px; --max-width:1120px;
     --head:"Press Start 2P",monospace; --body:"VT323","Courier New",monospace;
   }
   :root[data-theme="light"]{
     --bg:#efe9da; --bg-alt:#e5dcc6; --surface:#fffdf6; --surface-2:#e8e0cd;
     --border:#4a3a8f; --shadow-col:#2a2350; --text:#211c33; --muted:#5e5780;
-    --green:#178040; --pink:#d63384; --cyan:#1f6fd0; --yellow:#b07700;
-    --on-accent:#fffdf6;
+    --green:#178040; --pink:#d63384; --cyan:#1f6fd0; --yellow:#b07700; --on-accent:#fffdf6;
   }
-
   *{box-sizing:border-box}
   html,body{margin:0}
   body{background:var(--bg);color:var(--text);font-family:var(--body);
     font-size:20px;line-height:1.35;padding:clamp(14px,3vw,34px)}
   .wrap{max-width:var(--max-width);margin:0 auto}
-  h1,h2{font-family:var(--head);font-weight:400;margin:0}
+  h1,h2,h3{font-family:var(--head);font-weight:400;margin:0}
 
-  /* ---- header ---- */
   header{display:flex;flex-wrap:wrap;align-items:flex-start;gap:14px 24px;
-    justify-content:space-between;margin-bottom:20px}
-  .brand{display:flex;flex-direction:column;gap:12px;max-width:60ch}
-  .logo{font-size:clamp(15px,3.2vw,23px);line-height:1.3;color:var(--text);
-    display:flex;align-items:center;gap:14px}
+    justify-content:space-between;margin-bottom:18px}
+  .brand{display:flex;flex-direction:column;gap:11px;max-width:62ch}
+  .logo{font-size:clamp(15px,3.2vw,22px);line-height:1.3;display:flex;align-items:center;gap:14px}
   .logo .dot{width:16px;height:16px;background:var(--yellow);
     box-shadow:4px 4px 0 var(--shadow-col);flex:none}
   .tagline{font-size:19px;color:var(--muted);line-height:1.3}
-  .themebtn{font-family:var(--head);font-size:9px;color:var(--text);
-    background:var(--surface-2);border:3px solid var(--border);
-    box-shadow:4px 4px 0 var(--shadow-col);padding:11px 13px;cursor:pointer}
+  .themebtn{font-family:var(--head);font-size:9px;color:var(--text);background:var(--surface-2);
+    border:3px solid var(--border);box-shadow:4px 4px 0 var(--shadow-col);padding:11px 13px;cursor:pointer}
   .themebtn:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--shadow-col)}
 
-  /* ---- reduction chain ---- */
-  .chain{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:0 0 22px;font-size:17px}
-  .chain .node{font-family:var(--body);padding:5px 11px;border:3px solid var(--border);
-    background:var(--surface);color:var(--muted);box-shadow:2px 2px 0 var(--shadow-col)}
-  .chain .node.here{background:var(--green);color:var(--on-accent);border-color:var(--shadow-col)}
-  .chain .node.soon{opacity:.6;border-style:dashed;box-shadow:none}
-  .chain .arr{color:var(--muted);opacity:.7}
+  /* ---- stepper ---- */
+  .stepper{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 22px}
+  .step{font-family:var(--body);font-size:17px;padding:6px 12px;cursor:pointer;
+    border:3px solid var(--border);background:var(--surface);color:var(--muted);
+    box-shadow:3px 3px 0 var(--shadow-col)}
+  .step:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--shadow-col)}
+  .step.here{background:var(--green);color:var(--on-accent);border-color:var(--shadow-col)}
+  .step.done{color:var(--text);border-color:var(--cyan)}
+  .step .n{font-family:var(--head);font-size:8px;margin-right:7px;opacity:.8}
+  .arr{color:var(--muted);opacity:.7}
+  .nav{margin-left:auto;display:flex;gap:8px}
 
-  /* ---- layout ---- */
-  .grid{display:grid;grid-template-columns:360px 1fr;gap:20px;align-items:start}
-  @media (max-width:880px){.grid{grid-template-columns:1fr}}
+  .grid{display:grid;grid-template-columns:330px 1fr;gap:20px;align-items:start}
+  @media (max-width:900px){.grid{grid-template-columns:1fr}}
   .panel{background:var(--surface);border:var(--pixel) solid var(--border);
     box-shadow:8px 8px 0 var(--shadow-col);padding:18px}
-  .panel + .panel{margin-top:20px}
   h2.lbl{font-size:10px;color:var(--muted);margin:0 0 12px;line-height:1.5}
   h2.lbl:not(:first-child){margin-top:22px}
 
-  label.fld{display:block;font-family:var(--head);font-size:8px;color:var(--muted);
-    margin:0 0 8px;line-height:1.6}
-  textarea{width:100%;font-family:var(--body);font-size:19px;line-height:1.5;
-    color:var(--text);background:var(--bg-alt);border:3px solid var(--border);
-    padding:10px 12px;resize:vertical;min-height:74px}
-  textarea:focus,button:focus-visible,.chip:focus-visible{outline:3px solid var(--cyan);
-    outline-offset:2px}
+  label.fld{display:block;font-family:var(--head);font-size:8px;color:var(--muted);margin:0 0 8px;line-height:1.6}
+  textarea{width:100%;font-family:var(--body);font-size:19px;line-height:1.5;color:var(--text);
+    background:var(--bg-alt);border:3px solid var(--border);padding:10px 12px;resize:vertical;min-height:70px}
+  textarea:focus,button:focus-visible,.chip:focus-visible,.step:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
   .hint{font-size:17px;color:var(--muted);margin:9px 0 0;line-height:1.3}
   .hint code{font-family:var(--body);background:var(--surface-2);padding:0 6px;color:var(--cyan)}
-
   .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-  button.act{font-family:var(--body);font-size:18px;cursor:pointer;
-    padding:9px 14px;border:3px solid var(--border);background:var(--surface-2);
-    color:var(--text);box-shadow:4px 4px 0 var(--shadow-col)}
+  button.act{font-family:var(--body);font-size:18px;cursor:pointer;padding:9px 14px;
+    border:3px solid var(--border);background:var(--surface-2);color:var(--text);
+    box-shadow:4px 4px 0 var(--shadow-col)}
   button.act:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--shadow-col)}
   button.act.primary{background:var(--green);color:var(--on-accent);border-color:var(--shadow-col)}
+  button.act.sm{font-size:16px;padding:7px 11px;box-shadow:3px 3px 0 var(--shadow-col)}
+  button.act.sm:active{transform:translate(3px,3px)}
 
   .vars{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
-  .chip{font-family:var(--body);font-size:19px;cursor:pointer;padding:7px 12px;
-    border:3px solid var(--border);background:var(--surface-2);color:var(--muted);
-    box-shadow:3px 3px 0 var(--shadow-col);display:flex;align-items:center;gap:8px}
+  .chip{font-family:var(--body);font-size:19px;cursor:pointer;padding:7px 12px;border:3px solid var(--border);
+    background:var(--surface-2);color:var(--muted);box-shadow:3px 3px 0 var(--shadow-col);display:flex;align-items:center;gap:8px}
   .chip .val{min-width:1ch;text-align:center}
   .chip.t{background:var(--yellow);color:var(--on-accent);border-color:var(--shadow-col)}
   .chip:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--shadow-col)}
 
-  /* ---- readout ---- */
-  .readout{font-family:var(--body);font-size:18px;line-height:1.7;
-    background:var(--bg-alt);border:3px solid var(--border);padding:11px 13px;margin-top:4px}
-  .readout .k{color:var(--muted)}
-  .readout .sat{color:var(--green)}
-  .readout .unsat{color:var(--pink)}
-  .readout .ok{color:var(--cyan)}
-  .cl-list{margin:12px 0 0;padding:0;list-style:none;font-size:18px}
-  .cl-list li{padding:3px 0;color:var(--muted)}
-  .cl-list li b{color:var(--text)}
-  .cl-list li.bad b{color:var(--pink)}
-  .cl-list .pick{color:var(--yellow)}
+  .readout{font-family:var(--body);font-size:18px;line-height:1.7;background:var(--bg-alt);
+    border:3px solid var(--border);padding:11px 13px;margin-top:4px}
+  .readout .k{color:var(--muted)} .readout .sat,.readout .ok{color:var(--green)}
+  .readout .unsat{color:var(--pink)} .readout .cy{color:var(--cyan)}
 
-  /* ---- graph card ---- */
-  .stage{background:var(--surface);border:var(--pixel) solid var(--border);
-    box-shadow:8px 8px 0 var(--shadow-col);padding:10px;overflow-x:auto}
+  /* ---- stage area ---- */
+  .stage-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 6px}
+  .stage-head h2{font-size:13px;color:var(--text)}
+  .stage-head .of{font-family:var(--body);font-size:17px;color:var(--muted)}
+  .caption{font-size:18px;color:var(--muted);line-height:1.4;margin:0 0 14px}
+  .caption b{color:var(--text)}
+
+  .stage-body{background:var(--surface);border:var(--pixel) solid var(--border);
+    box-shadow:8px 8px 0 var(--shadow-col);padding:14px;overflow-x:auto}
   svg{display:block;width:100%;height:auto;min-width:520px}
+
+  /* formula view */
+  .fv{display:flex;flex-direction:column;gap:14px}
+  .fv .cl{border:3px solid var(--border);background:var(--bg-alt);padding:11px 13px}
+  .fv .cl h4{font-family:var(--head);font-size:8px;color:var(--muted);margin:0 0 9px;line-height:1.5}
+  .expr{display:flex;flex-wrap:wrap;gap:7px;align-items:center;font-size:20px}
+  .lit{padding:2px 10px;border:3px solid var(--border);background:var(--surface-2);color:var(--muted)}
+  .lit.t{background:var(--yellow);color:var(--on-accent);border-color:var(--shadow-col)}
+  .lit.fr{border-style:dashed}
+  .op{color:var(--muted);padding:0 2px}
+  .to{font-family:var(--head);font-size:8px;color:var(--cyan);margin:2px 0}
+  .split{margin-top:9px;border-left:var(--pixel) solid var(--cyan);padding-left:13px;
+    display:flex;flex-direction:column;gap:8px}
+  .kept{color:var(--green)}
+
+  /* graph */
   .edge-tri{stroke:var(--border);stroke-width:3}
-  .edge-conf{stroke:var(--pink);stroke-width:2;stroke-dasharray:5 5;opacity:.75}
-  .node circle{fill:var(--surface-2);stroke:var(--border);stroke-width:3;
-    transition:fill .22s,stroke .22s,r .22s}
-  .node text{font-family:var(--body);font-size:18px;fill:var(--muted);
-    text-anchor:middle;dominant-baseline:central;transition:fill .22s}
+  .edge-conf{stroke:var(--pink);stroke-width:2;stroke-dasharray:5 5;opacity:.7}
+  .edge-comp{stroke:var(--border);stroke-width:1.5;opacity:.28}
+  .edge-clq{stroke:var(--yellow);stroke-width:4}
+  .node circle{fill:var(--surface-2);stroke:var(--border);stroke-width:3;transition:fill .22s,stroke .22s,r .22s}
+  .node text{font-family:var(--body);font-size:17px;fill:var(--muted);text-anchor:middle;dominant-baseline:central;transition:fill .22s}
   .node.true circle{fill:var(--surface);stroke:var(--yellow)}
   .node.true text{fill:var(--text)}
   .node.sel circle{fill:var(--yellow);stroke:var(--shadow-col);stroke-width:4}
   .node.sel text{fill:var(--on-accent)}
+  .node.cover circle{fill:var(--cyan);stroke:var(--shadow-col);stroke-width:4}
+  .node.cover text{fill:var(--on-accent)}
   .node.unsat circle{stroke:var(--pink);stroke-dasharray:4 4}
   .clabel{font-family:var(--head);font-size:8px;fill:var(--muted);text-anchor:middle}
 
-  .legend{display:flex;flex-wrap:wrap;gap:14px 22px;margin-top:16px;
-    font-family:var(--body);font-size:17px;color:var(--muted)}
+  .legend{display:flex;flex-wrap:wrap;gap:12px 20px;margin-top:14px;font-size:17px;color:var(--muted)}
   .legend span{display:flex;align-items:center;gap:8px}
   .sw{width:18px;height:18px;border:3px solid var(--border);flex:none}
   .sw.true{background:var(--surface);border-color:var(--yellow)}
   .sw.sel{background:var(--yellow);border-color:var(--shadow-col)}
+  .sw.cover{background:var(--cyan);border-color:var(--shadow-col)}
   .sw.conf{border:0;height:0;border-top:3px dashed var(--pink);width:20px}
+  .sw.clq{border:0;height:0;border-top:4px solid var(--yellow);width:20px}
 
-  .explain p{font-size:19px;color:var(--text);margin:0 0 12px;line-height:1.4}
-  .explain .thm{font-family:var(--body);font-size:18px;color:var(--cyan);
-    background:var(--bg-alt);border-left:var(--pixel) solid var(--cyan);
-    padding:11px 14px;line-height:1.5}
-
-  footer{margin-top:28px;padding-top:16px;border-top:3px solid var(--border);
-    display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;
-    font-family:var(--body);font-size:17px;color:var(--muted)}
+  footer{margin-top:26px;padding-top:16px;border-top:3px solid var(--border);display:flex;
+    flex-wrap:wrap;gap:8px 18px;justify-content:space-between;font-size:17px;color:var(--muted)}
   footer a{color:var(--green);text-decoration:none}
   footer a:hover{text-decoration:underline}
-
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -152,68 +155,47 @@
   <header>
     <div class="brand">
       <h1 class="logo"><span class="dot"></span>Reduction Zoo</h1>
-      <p class="tagline">Watch an NP-complete certificate flow through a Karp reduction. Flip a
-        variable, solve the formula, and see a satisfying assignment become an independent set.</p>
+      <p class="tagline">Step one certificate through the whole NP-complete chain — from a raw SAT
+        formula down to a clique — and watch each reduction carry the solution forward.</p>
     </div>
     <button class="themebtn" id="theme" type="button">Theme</button>
   </header>
 
-  <nav class="chain" aria-label="reduction chain">
-    <span class="node soon">SAT</span><span class="arr">&gt;</span>
-    <span class="node soon">3-SAT</span><span class="arr">&gt;</span>
-    <span class="node here">Independent Set</span><span class="arr">&gt;</span>
-    <span class="node soon">Vertex Cover</span><span class="arr">&gt;</span>
-    <span class="node soon">Clique</span>
-  </nav>
+  <nav class="stepper" id="stepper" aria-label="reduction pipeline"></nav>
 
   <div class="grid">
     <section class="panel" aria-label="controls">
-      <h2 class="lbl">Formula // 3-CNF</h2>
+      <h2 class="lbl">Formula // CNF (any clause size)</h2>
       <label class="fld" for="formula">clauses (AND) of literals (OR)</label>
-      <textarea id="formula" spellcheck="false">(x1 | ~x2 | x3) & (~x1 | x2 | ~x3) & (x1 | x2 | x3)</textarea>
-      <p class="hint">Use <code>|</code> for OR, <code>&amp;</code> or newline between clauses,
-        <code>~</code> for NOT. Vars like <code>x1</code>.</p>
+      <textarea id="formula" spellcheck="false">(x1 | ~x2 | x3 | x4) & (~x1 | x2 | ~x3)</textarea>
+      <p class="hint">Clauses may have <b>any</b> number of literals — stage 1 splits them into
+        3-CNF. <code>|</code>=OR, <code>&amp;</code>/newline between clauses, <code>~</code>=NOT.</p>
       <div class="row">
-        <button class="act primary" id="build" type="button">Build graph</button>
+        <button class="act primary" id="build" type="button">Build</button>
         <button class="act" id="solve" type="button">Solve</button>
         <button class="act" id="clear" type="button">All false</button>
       </div>
-
       <h2 class="lbl">Assignment</h2>
       <div class="vars" id="vars"></div>
-
-      <h2 class="lbl">Readout</h2>
+      <p class="hint" style="margin-top:10px">Fresh variables <b>y</b> from stage 1 are set
+        automatically to carry your assignment.</p>
+      <h2 class="lbl">Certificate</h2>
       <div class="readout" id="readout"></div>
-      <ul class="cl-list" id="clauses"></ul>
     </section>
 
     <div>
-      <div class="stage">
-        <svg id="graph" viewBox="0 0 760 560" role="img"
-             aria-label="Reduction graph: one triangle per clause, dashed edges between contradictory literals"></svg>
+      <div class="stage-head">
+        <h2 id="st-title"></h2><span class="of" id="st-of"></span>
       </div>
-      <div class="legend">
-        <span><i class="sw"></i>literal</span>
-        <span><i class="sw true"></i>literal is TRUE</span>
-        <span><i class="sw sel"></i>chosen // in the independent set</span>
-        <span><i class="sw conf"></i>x vs ~x (can't pick both)</span>
-      </div>
-
-      <div class="panel explain" style="margin-top:20px">
-        <h2 class="lbl">The reduction</h2>
-        <p>Each clause becomes a <b>triangle</b> — its three literals mutually linked, so an
-          independent set takes <b>at most one vertex per clause</b>. A dashed edge joins every
-          literal to its negation, so you can never pick both <b>x</b> and <b>~x</b>.</p>
-        <p class="thm">phi is satisfiable &lt;=&gt; the graph has an independent set of size k = m
-          (one vertex per triangle). The chosen vertices are exactly one <b>true literal</b> per
-          clause.</p>
-      </div>
+      <p class="caption" id="st-caption"></p>
+      <div class="stage-body" id="stage"></div>
+      <div id="st-extra"></div>
     </div>
   </div>
 
   <footer>
-    <span>REDUCTION ZOO // v1 // 3-SAT &lt;=p Independent Set</span>
-    <span>MIT // <a href="#" id="ghlink">github.com/Yonghao-Lee/reduction-zoo</a></span>
+    <span>REDUCTION ZOO // SAT &lt;=p 3-SAT &lt;=p IND.SET &lt;=p VERTEX COVER, CLIQUE</span>
+    <span>MIT // chicoryman.com</span>
   </footer>
 </div>
 
@@ -222,175 +204,252 @@
   "use strict";
   const svgNS="http://www.w3.org/2000/svg";
   const $=s=>document.querySelector(s);
+  const STAGES=["SAT","3-SAT","Independent Set","Vertex Cover","Clique"];
 
-  let clauses=[], vars=[], assign={}, verts=[], edges=[];
-  const vEl={};
-
-  function parseLiteral(s){
-    let neg=false; s=s.trim();
-    while(s && (s[0]==="~"||s[0]==="¬"||s[0]==="!")){neg=!neg;s=s.slice(1).trim();}
-    return {v:s,neg:neg};
-  }
+  // ---- verified core logic (unit-tested in Node) ----
+  const P=n=>({v:n,neg:false}), N=n=>({v:n,neg:true});
+  const litVal=(l,a)=>a[l.v]!==l.neg;
+  function parseLiteral(s){let neg=false;s=s.trim();
+    while(s&&(s[0]==="~"||s[0]==="¬"||s[0]==="!")){neg=!neg;s=s.slice(1).trim();}return {v:s,neg};}
   function parseFormula(text){
     const cl=text.split(/[\n&∧]+/).map(c=>c.replace(/[()]/g," ").trim()).filter(Boolean)
-      .map(c=>c.split(/[|∨]+/).map(s=>s.trim()).filter(Boolean).map(parseLiteral));
+      .map(c=>c.split(/[|∨]+/).map(s=>s.trim()).filter(Boolean).map(parseLiteral)).filter(c=>c.length);
     const seen=[],set=new Set();
     cl.forEach(c=>c.forEach(l=>{if(l.v&&!set.has(l.v)){set.add(l.v);seen.push(l.v);}}));
-    return {clauses:cl,vars:seen};
-  }
-  const litTrue=(l)=>assign[l.v]!==l.neg;
-  const litStr=(l)=>(l.neg?"¬":"")+l.v;
+    return {clauses:cl,vars:seen};}
+  function expand(orig){
+    let fc=0; const three=[],per=[],fresh=[];
+    orig.forEach((cl,ci)=>{
+      const k=cl.length,F=[]; const nf=k===1?2:k===2?1:k<=3?0:k-3;
+      for(let t=0;t<nf;t++){const nm="y#"+(++fc);F.push(nm);fresh.push(nm);}
+      let out=[];
+      if(k===1){const l=cl[0];out=[[l,P(F[0]),P(F[1])],[l,N(F[0]),P(F[1])],[l,P(F[0]),N(F[1])],[l,N(F[0]),N(F[1])]];}
+      else if(k===2){out=[[cl[0],cl[1],P(F[0])],[cl[0],cl[1],N(F[0])]];}
+      else if(k===3){out=[[cl[0],cl[1],cl[2]]];}
+      else{out.push([cl[0],cl[1],P(F[0])]);
+        for(let j=1;j<=k-4;j++)out.push([N(F[j-1]),cl[j+1],P(F[j])]);
+        out.push([N(F[k-4]),cl[k-2],cl[k-1]]);}
+      const idx=[];out.forEach(lits=>{idx.push(three.length);three.push({lits,src:ci});});
+      per.push({src:ci,size:k,fresh:F,out:idx});
+    });
+    return {three,per,fresh};}
+  function deriveFresh(assign,exp){
+    const full=Object.assign({},assign),bad=new Set();
+    exp.per.forEach(pc=>{const F=pc.fresh,nf=F.length;let done=false;
+      for(let m=0;m<(1<<nf)&&!done;m++){const tr={};F.forEach((f,i)=>tr[f]=!!(m&(1<<i)));
+        const mg=Object.assign({},full,tr);
+        if(pc.out.every(ix=>exp.three[ix].lits.some(l=>litVal(l,mg)))){F.forEach(f=>full[f]=tr[f]);done=true;}}
+      if(!done){F.forEach(f=>full[f]=false);bad.add(pc.src);}});
+    return {full,bad};}
+  function solve(orig,vars){const n=vars.length;if(n>22)return null;
+    for(let m=0;m<(1<<n);m++){const a={};vars.forEach((v,i)=>a[v]=!!(m&(1<<i)));
+      if(orig.every(cl=>cl.some(l=>litVal(l,a))))return a;}return null;}
+
+  // ---- state ----
+  let origClauses=[],origVars=[],assign={},exp=null,verts=[],gEdges=[],compEdges=[],gset=null,cur=0;
+  const key=(i,j)=>Math.min(i,j)+"-"+Math.max(i,j);
+  const vid=(c,l)=>c*3+l;
+  const disp=v=>v.replace("#","");
+  const litStr=l=>(l.neg?"¬":"")+disp(l.v);
 
   function build(){
-    const p=parseFormula($("#formula").value);
-    if(!p.clauses.length){return;}
-    clauses=p.clauses; vars=p.vars;
-    assign={}; vars.forEach(v=>assign[v]=false);
-    layout(); renderGraph(); renderVars(); apply();
+    const p=parseFormula($("#formula").value); if(!p.clauses.length)return;
+    origClauses=p.clauses; origVars=p.vars; assign={}; origVars.forEach(v=>assign[v]=false);
+    exp=expand(origClauses);
+    layout(); buildEdges(); renderVars(); cur=0; renderStepper(); renderStage();
   }
-
   function layout(){
-    verts=[]; edges=[];
-    const W=760,H=560,cx=W/2,cy=H/2,m=clauses.length;
-    const CR = m<=1?0:Math.min(200,150+(m-3)*16);
-    const vr=46;
-    clauses.forEach((cl,ci)=>{
-      const ca=-Math.PI/2 + ci*2*Math.PI/m;
-      const ccx=cx+(m<=1?0:CR)*Math.cos(ca), ccy=cy+(m<=1?0:CR)*Math.sin(ca);
-      cl.forEach((lit,li)=>{
-        const a=ca + li*2*Math.PI/3;
-        verts.push({id:"c"+ci+"l"+li,ci,li,lit,
-          x:ccx+vr*Math.cos(a), y:ccy+vr*Math.sin(a), ccx,ccy});
-      });
-      for(let a=0;a<cl.length;a++)for(let b=a+1;b<cl.length;b++)
-        edges.push({a:"c"+ci+"l"+a,b:"c"+ci+"l"+b,type:"tri"});
+    verts=[]; const W=760,H=560,cx=W/2,cy=H/2,m=exp.three.length;
+    const CR=m<=1?0:Math.min(210,150+(m-3)*15), vr=46;
+    exp.three.forEach((cl,ci)=>{
+      const ca=-Math.PI/2+ci*2*Math.PI/m, ccx=cx+(m<=1?0:CR)*Math.cos(ca), ccy=cy+(m<=1?0:CR)*Math.sin(ca);
+      cl.lits.forEach((lit,li)=>{const a=ca+li*2*Math.PI/3;
+        verts.push({id:vid(ci,li),ci,li,lit,x:ccx+vr*Math.cos(a),y:ccy+vr*Math.sin(a),ccx,ccy});});
     });
+  }
+  function buildEdges(){
+    gEdges=[]; gset=new Set();
+    exp.three.forEach((cl,ci)=>{for(let a=0;a<3;a++)for(let b=a+1;b<3;b++){
+      const u=vid(ci,a),w=vid(ci,b);gEdges.push({u,w,type:"tri"});gset.add(key(u,w));}});
     for(let i=0;i<verts.length;i++)for(let j=i+1;j<verts.length;j++){
       const A=verts[i],B=verts[j];
-      if(A.ci!==B.ci && A.lit.v===B.lit.v && A.lit.neg!==B.lit.neg)
-        edges.push({a:A.id,b:B.id,type:"conf"});
-    }
-  }
-  function pos(id){return verts.find(v=>v.id===id);}
-
-  function renderGraph(){
-    const g=$("#graph"); g.innerHTML="";
-    edges.forEach(e=>{
-      const A=pos(e.a),B=pos(e.b);
-      const ln=document.createElementNS(svgNS,"line");
-      ln.setAttribute("x1",A.x);ln.setAttribute("y1",A.y);
-      ln.setAttribute("x2",B.x);ln.setAttribute("y2",B.y);
-      ln.setAttribute("class",e.type==="tri"?"edge-tri":"edge-conf");
-      g.appendChild(ln);
-    });
-    const seen={};
-    verts.forEach(v=>{if(seen[v.ci])return;seen[v.ci]=1;
-      const t=document.createElementNS(svgNS,"text");
-      t.setAttribute("x",v.ccx);t.setAttribute("y",v.ccy);
-      t.setAttribute("class","clabel");t.textContent="C"+(v.ci+1);
-      g.appendChild(t);
-    });
-    verts.forEach(v=>{
-      const grp=document.createElementNS(svgNS,"g");
-      grp.setAttribute("class","node");
-      const c=document.createElementNS(svgNS,"circle");
-      c.setAttribute("cx",v.x);c.setAttribute("cy",v.y);c.setAttribute("r",21);
-      const t=document.createElementNS(svgNS,"text");
-      t.setAttribute("x",v.x);t.setAttribute("y",v.y);t.textContent=litStr(v.lit);
-      grp.appendChild(c);grp.appendChild(t);
-      g.appendChild(grp); vEl[v.id]=grp;
-    });
+      if(A.ci!==B.ci&&A.lit.v===B.lit.v&&A.lit.neg!==B.lit.neg){
+        gEdges.push({u:A.id,w:B.id,type:"conf"});gset.add(key(A.id,B.id));}}
+    compEdges=[]; const V=verts.length;
+    for(let i=0;i<V;i++)for(let j=i+1;j<V;j++)if(!gset.has(key(i,j)))compEdges.push({u:i,w:j});
   }
 
+  function derived(){
+    const {full,bad}=deriveFresh(assign,exp);
+    const sel=new Set(), satC=[];
+    exp.three.forEach((cl,ci)=>{let rep=-1;for(let li=0;li<3;li++)if(litVal(cl.lits[li],full)){rep=li;break;}
+      satC[ci]=rep>=0; if(rep>=0)sel.add(vid(ci,rep));});
+    const allSat=satC.every(Boolean);
+    return {full,badSrc:bad,sel,satC,allSat};}
+
+  // ---- renders ----
+  function renderStepper(){
+    const s=$("#stepper"); s.innerHTML="";
+    STAGES.forEach((name,i)=>{
+      if(i>0){const a=document.createElement("span");a.className="arr";a.textContent=">";s.appendChild(a);}
+      const b=document.createElement("button"); b.type="button";
+      b.className="step "+(i===cur?"here":(i<cur?"done":""));
+      b.innerHTML='<span class="n">'+i+'</span>'+name;
+      b.addEventListener("click",()=>{cur=i;renderStage();});
+      s.appendChild(b);
+    });
+    const nav=document.createElement("span"); nav.className="nav";
+    const prev=document.createElement("button"); prev.className="act sm"; prev.type="button"; prev.textContent="< prev";
+    prev.addEventListener("click",()=>{if(cur>0){cur--;renderStage();}});
+    const next=document.createElement("button"); next.className="act sm"; next.type="button"; next.textContent="next >";
+    next.addEventListener("click",()=>{if(cur<4){cur++;renderStage();}});
+    nav.appendChild(prev); nav.appendChild(next); s.appendChild(nav);
+  }
   function renderVars(){
     const box=$("#vars"); box.innerHTML="";
-    vars.forEach(v=>{
-      const b=document.createElement("button");
-      b.className="chip"; b.type="button";
+    origVars.forEach(v=>{const b=document.createElement("button");b.className="chip";b.type="button";
       b.innerHTML=v+' = <span class="val"></span>';
-      b.addEventListener("click",()=>{assign[v]=!assign[v];apply();});
-      box.appendChild(b); b._var=v;
-    });
+      b.addEventListener("click",()=>{assign[v]=!assign[v];update();});box.appendChild(b);b._var=v;});
   }
 
-  function solve(){
-    const n=vars.length;
-    if(n>22){flash("Too many variables to brute-force.");return;}
-    for(let mask=0;mask<(1<<n);mask++){
-      const a={}; vars.forEach((v,i)=>a[v]=!!(mask&(1<<i)));
-      if(clauses.every(cl=>cl.some(l=>a[l.v]!==l.neg))){assign=a;apply();return;}
+  const CAPTIONS=[
+    'Your input formula — clauses of <b>any</b> size. A satisfying assignment is the certificate we carry all the way down.',
+    'Every clause is rewritten into <b>3-literal</b> clauses using fresh variables <b>y</b>. Satisfiable exactly when the original was, and your assignment extends to the y’s.',
+    'Each 3-clause becomes a <b>triangle</b> (pick ≤ 1 vertex each); dashed edges join x and ¬x. One true literal per clause is an <b>independent set</b> of size k = m.',
+    'Take everything the independent set didn’t: <b>V minus the independent set</b> is a vertex cover of size |V| − k.',
+    'Flip every edge (the <b>complement graph</b>). The same independent set is now a <b>clique</b> of size k.',
+  ];
+
+  function renderStage(){
+    renderStepper();
+    $("#st-title").textContent=STAGES[cur];
+    $("#st-of").textContent="step "+cur+" / 4";
+    $("#st-caption").innerHTML=CAPTIONS[cur];
+    const stage=$("#stage"), extra=$("#st-extra"); extra.innerHTML="";
+    if(cur===0||cur===1){stage.innerHTML="";stage.appendChild(cur===0?formulaSAT():formula3SAT());}
+    else{stage.innerHTML="";const svg=document.createElementNS(svgNS,"svg");
+      svg.setAttribute("viewBox","0 0 760 560");svg.setAttribute("id","graph");
+      svg.setAttribute("role","img");svg.setAttribute("aria-label",STAGES[cur]+" graph");
+      stage.appendChild(svg); drawGraph(svg); extra.appendChild(legend());}
+    update();
+  }
+
+  function formulaSAT(){
+    const {full}=derived();
+    const box=document.createElement("div"); box.className="fv";
+    origClauses.forEach((cl,ci)=>{
+      const d=document.createElement("div"); d.className="cl";
+      d.innerHTML='<h4>C'+(ci+1)+' // '+cl.length+' literals</h4>';
+      d.appendChild(expr(cl,full)); box.appendChild(d);});
+    return box;
+  }
+  function formula3SAT(){
+    const {full}=derived();
+    const box=document.createElement("div"); box.className="fv";
+    exp.per.forEach(pc=>{
+      const d=document.createElement("div"); d.className="cl";
+      d.innerHTML='<h4>C'+(pc.src+1)+' ('+pc.size+' lit'+(pc.size>1?'s':'')+') '
+        +(pc.fresh.length?'// +'+pc.fresh.map(disp).join(", "):'// already 3-CNF')+'</h4>';
+      d.appendChild(expr(origClauses[pc.src],full));
+      const to=document.createElement("div"); to.className="to"; to.textContent="↓ splits into"; d.appendChild(to);
+      const sp=document.createElement("div"); sp.className="split";
+      pc.out.forEach(ix=>sp.appendChild(expr(exp.three[ix].lits,full)));
+      d.appendChild(sp); box.appendChild(d);});
+    return box;
+  }
+  function expr(lits,full){
+    const e=document.createElement("div"); e.className="expr";
+    const open=document.createElement("span"); open.className="op"; open.textContent="("; e.appendChild(open);
+    lits.forEach((l,i)=>{if(i){const o=document.createElement("span");o.className="op";o.textContent="∨";e.appendChild(o);}
+      const s=document.createElement("span"); s.className="lit"+(litVal(l,full)?" t":"")+(l.v.indexOf("#")>=0?" fr":"");
+      s.textContent=litStr(l); e.appendChild(s);});
+    const close=document.createElement("span"); close.className="op"; close.textContent=")"; e.appendChild(close);
+    return e;
+  }
+
+  let nodeEls={}, edgeEls=[];
+  function drawGraph(svg){
+    svg.innerHTML=""; nodeEls={}; edgeEls=[];
+    const useComp = cur===4;
+    const elist = useComp?compEdges:gEdges;
+    elist.forEach(e=>{const A=verts[e.u],B=verts[e.w];
+      const ln=document.createElementNS(svgNS,"line");
+      ln.setAttribute("x1",A.x);ln.setAttribute("y1",A.y);ln.setAttribute("x2",B.x);ln.setAttribute("y2",B.y);
+      ln.setAttribute("class",useComp?"edge-comp":(e.type==="tri"?"edge-tri":"edge-conf"));
+      svg.appendChild(ln); edgeEls.push({el:ln,u:e.u,w:e.w,comp:useComp});});
+    const seen={};
+    verts.forEach(v=>{if(seen[v.ci])return;seen[v.ci]=1;
+      const t=document.createElementNS(svgNS,"text");t.setAttribute("x",v.ccx);t.setAttribute("y",v.ccy);
+      t.setAttribute("class","clabel");t.textContent="C"+(v.ci+1);svg.appendChild(t);});
+    verts.forEach(v=>{const g=document.createElementNS(svgNS,"g");g.setAttribute("class","node");
+      const c=document.createElementNS(svgNS,"circle");c.setAttribute("cx",v.x);c.setAttribute("cy",v.y);c.setAttribute("r",21);
+      const t=document.createElementNS(svgNS,"text");t.setAttribute("x",v.x);t.setAttribute("y",v.y);t.textContent=litStr(v.lit);
+      g.appendChild(c);g.appendChild(t);svg.appendChild(g);nodeEls[v.id]=g;});
+  }
+  function legend(){
+    const l=document.createElement("div"); l.className="legend";
+    if(cur===2)l.innerHTML='<span><i class="sw sel"></i>independent set</span>'
+      +'<span><i class="sw true"></i>true literal</span><span><i class="sw conf"></i>x vs ¬x</span>';
+    else if(cur===3)l.innerHTML='<span><i class="sw cover"></i>vertex cover (V − IS)</span>'
+      +'<span><i class="sw sel"></i>independent set</span>';
+    else l.innerHTML='<span><i class="sw sel"></i>clique</span>'
+      +'<span><i class="sw clq"></i>clique edge</span><span style="opacity:.6"><i class="sw"></i>complement edge</span>';
+    return l;
+  }
+
+  function update(){
+    const {full,sel,satC,allSat}=derived();
+    // var chips
+    document.querySelectorAll("#vars .chip").forEach(ch=>{const on=assign[ch._var];
+      ch.className="chip "+(on?"t":"f");ch.querySelector(".val").textContent=on?"T":"F";});
+    // certificate readout (left)
+    const asn=origVars.map(v=>v+"="+(assign[v]?"T":"F")).join("  ");
+    const ys=exp.fresh.map(f=>disp(f)+"="+(full[f]?"T":"F")).join("  ");
+    let r='<div><span class="k">x</span> '+(asn||"-")+'</div>';
+    if(exp.fresh.length)r+='<div><span class="k">y</span> <span class="cy">'+ys+'</span></div>';
+    r+='<div><span class="k">phi</span> '+(allSat?'<span class="sat">SATISFIED</span>':'<span class="unsat">unsatisfied</span>')+'</div>';
+    $("#readout").innerHTML=r;
+    // per-stage graph classes / extra
+    if(cur>=2){
+      const m3=exp.three.length, V=verts.length;
+      Object.keys(nodeEls).forEach(id=>{id=+id;const v=verts[id];let cls="node";
+        const isSel=sel.has(id);
+        if(cur===2){if(litVal(v.lit,full))cls+=" true";if(isSel)cls+=" sel";if(!satC[v.ci])cls+=" unsat";}
+        else if(cur===3){if(!isSel)cls+=" cover";}
+        else{if(isSel)cls+=" sel";}
+        nodeEls[id].setAttribute("class",cls);});
+      if(cur===4)edgeEls.forEach(e=>{const both=sel.has(e.u)&&sel.has(e.w);
+        e.el.setAttribute("class",both?"edge-clq":"edge-comp");});
+      // stage readout under graph
+      let msg="";
+      if(cur===2)msg=allSat?'<span class="ok">independent set = '+sel.size+' / '+m3+' · valid (no edge inside) ✓</span>'
+        :'<span class="unsat">'+sel.size+' / '+m3+' · formula unsatisfied, set incomplete</span>';
+      else if(cur===3){const vc=V-sel.size;
+        msg=allSat?'<span class="ok cy">vertex cover = '+vc+' = |V| − k = '+V+' − '+m3+' · covers every edge ✓</span>'
+        :'<span class="unsat">cover = '+vc+' vertices (formula unsatisfied)</span>';}
+      else msg=allSat?'<span class="ok">clique = '+sel.size+' / '+m3+' in the complement graph · all pairs joined ✓</span>'
+        :'<span class="unsat">'+sel.size+' / '+m3+' · formula unsatisfied</span>';
+      const ex=$("#st-extra");
+      let bar=ex.querySelector(".readout"); if(!bar){bar=document.createElement("div");bar.className="readout";bar.style.marginTop="14px";ex.insertBefore(bar,ex.firstChild);}
+      bar.innerHTML=msg;
     }
-    flash("This formula is UNSATISFIABLE - no independent set of size m exists.");
-    apply();
-  }
-  let flashTimer=null;
-  function flash(msg){
-    const r=$("#readout"); r.dataset.flash=msg;
-    clearTimeout(flashTimer); flashTimer=setTimeout(()=>{r.dataset.flash="";apply();},2800);
-    apply();
   }
 
-  function apply(){
-    const sel={}, satClause=[];
-    clauses.forEach((cl,ci)=>{
-      let rep=-1;
-      for(let li=0;li<cl.length;li++) if(litTrue(cl[li])){rep=li;break;}
-      satClause[ci]=rep>=0;
-      if(rep>=0) sel["c"+ci+"l"+rep]=true;
-    });
-    verts.forEach(v=>{
-      const el=vEl[v.id]; if(!el)return;
-      let cls="node";
-      if(litTrue(v.lit)) cls+=" true";
-      if(sel[v.id]) cls+=" sel";
-      if(!satClause[v.ci]) cls+=" unsat";
-      el.setAttribute("class",cls);
-    });
-    document.querySelectorAll("#vars .chip").forEach(ch=>{
-      const on=assign[ch._var];
-      ch.className="chip "+(on?"t":"f");
-      ch.querySelector(".val").textContent=on?"T":"F";
-    });
-    const m=clauses.length, isize=satClause.filter(Boolean).length, sat=isize===m;
-    const asnStr=vars.map(v=>v+"="+(assign[v]?"T":"F")).join("  ");
-    const r=$("#readout");
-    let html="";
-    if(r.dataset.flash) html+='<div class="unsat">'+r.dataset.flash+'</div>';
-    html+='<div><span class="k">assignment</span> '+(asnStr||"-")+'</div>';
-    html+='<div><span class="k">phi</span> '+(sat?'<span class="sat">SATISFIED</span>'
-        :'<span class="unsat">unsatisfied</span>')+'</div>';
-    html+='<div><span class="k">goal</span> independent set of size k = m = '+m+'</div>';
-    html+='<div><span class="k">chosen</span> '+(sat
-        ?'<span class="ok">'+isize+'/'+m+' // valid (no edge inside the set)</span>'
-        :'<span class="unsat">'+isize+'/'+m+' // cannot complete the set</span>')+'</div>';
-    r.innerHTML=html;
-    const ul=$("#clauses"); ul.innerHTML="";
-    clauses.forEach((cl,ci)=>{
-      const li=document.createElement("li");
-      const good=satClause[ci];
-      let rep=-1; for(let k=0;k<cl.length;k++) if(litTrue(cl[k])){rep=k;break;}
-      li.className=good?"":"bad";
-      li.innerHTML="<b>C"+(ci+1)+"</b> ("+cl.map((l,k)=>{
-        const s=litStr(l);
-        return (k===rep)?'<span class="pick">'+s+'</span>':s;
-      }).join(" v ")+")  "+(good?"-> pick "+litStr(cl[rep]):"-> no true literal");
-      ul.appendChild(li);
-    });
+  function doSolve(){
+    const a=solve(origClauses,origVars);
+    if(a){assign=a;} else {origVars.forEach(v=>assign[v]=false);
+      flash();}
+    update();
   }
+  function flash(){const r=$("#readout");r.innerHTML='<div class="unsat">UNSATISFIABLE — no certificate exists; the chain has no solution to carry.</div>'+r.innerHTML;}
 
-  $("#theme").addEventListener("click",()=>{
-    const cur=document.documentElement.getAttribute("data-theme")||"dark";
-    const next=cur==="dark"?"light":"dark";
-    document.documentElement.setAttribute("data-theme",next);
-    try{localStorage.setItem("theme",next);}catch(e){}
-  });
+  $("#theme").addEventListener("click",()=>{const cur=document.documentElement.getAttribute("data-theme")||"dark";
+    const nx=cur==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",nx);
+    try{localStorage.setItem("theme",nx);}catch(e){}});
   $("#build").addEventListener("click",build);
-  $("#solve").addEventListener("click",solve);
-  $("#clear").addEventListener("click",()=>{vars.forEach(v=>assign[v]=false);apply();});
-  $("#formula").addEventListener("keydown",e=>{
-    if(e.key==="Enter"&&(e.metaKey||e.ctrlKey)){e.preventDefault();build();}
-  });
-  $("#ghlink").addEventListener("click",e=>e.preventDefault());
+  $("#solve").addEventListener("click",doSolve);
+  $("#clear").addEventListener("click",()=>{origVars.forEach(v=>assign[v]=false);update();});
+  $("#formula").addEventListener("keydown",e=>{if(e.key==="Enter"&&(e.metaKey||e.ctrlKey)){e.preventDefault();build();}});
 
   build();
 })();

@@ -69,12 +69,12 @@ export const projects = [
   {
     title: 'Reduction Zoo',
     blurb:
-      'An interactive visualizer for NP-complete reductions — watch a certificate ' +
-      'flow through a Karp reduction. v1 does 3-SAT ≤ₚ Independent Set: type a 3-CNF ' +
-      'formula, each clause becomes a triangle, dashed edges join every literal to its ' +
-      'negation, and solving the formula lights up a satisfying assignment as an ' +
-      'independent set of size k = m. Runs entirely in the browser.',
-    tags: ['JavaScript', 'Complexity Theory', 'SVG', 'Interactive'],
+      'An interactive visualizer for NP-complete reductions — step one certificate ' +
+      'through the whole chain. Type any CNF formula and watch it flow: SAT → 3-SAT ' +
+      '(clause splitting with fresh variables) → Independent Set → Vertex Cover → ' +
+      'Clique, with a satisfying assignment carried forward and lit up in the graph at ' +
+      'every stage. Runs entirely in the browser.',
+    tags: ['JavaScript', 'NP-Completeness', 'SVG', 'Interactive'],
     link: import.meta.env.BASE_URL + 'reduction-zoo/',
     linkLabel: 'Open the demo',
     icon: '🦓',
