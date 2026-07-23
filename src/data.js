@@ -67,6 +67,19 @@ export const skills = [
 // Your projects. Edit, reorder, add, or remove cards freely.
 export const projects = [
   {
+    title: 'Reduction Zoo',
+    blurb:
+      'An interactive visualizer for NP-complete reductions — watch a certificate ' +
+      'flow through a Karp reduction. v1 does 3-SAT ≤ₚ Independent Set: type a 3-CNF ' +
+      'formula, each clause becomes a triangle, dashed edges join every literal to its ' +
+      'negation, and solving the formula lights up a satisfying assignment as an ' +
+      'independent set of size k = m. Runs entirely in the browser.',
+    tags: ['JavaScript', 'Complexity Theory', 'SVG', 'Interactive'],
+    link: import.meta.env.BASE_URL + 'reduction-zoo/',
+    linkLabel: 'Open the demo',
+    icon: '🦓',
+  },
+  {
     title: 'Score Distillation: SDS & PDS',
     blurb:
       'Text-to-image generation and editing by distilling a pretrained Stable ' +
