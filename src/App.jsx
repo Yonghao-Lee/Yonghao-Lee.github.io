@@ -62,7 +62,7 @@ export default function App() {
         </section>
       </main>
       <Footer />
-      <PixelCat variant="center" width={420} />
+      <PixelCat variant="corner" width={112} />
       <ChatWidget />
     </>
   )

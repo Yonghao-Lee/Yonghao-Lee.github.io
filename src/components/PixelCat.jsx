@@ -2,30 +2,36 @@ import { useState } from 'react'
 
 // A small pixel-art cat mascot, drawn from an ASCII map so it's easy to tweak.
 // Each character becomes one square "pixel":
-//   B = body   E = eye   P = nose   . / space = empty
+//   B = body   E = eye   P = nose   M = mouth   W = whisker   T = tail
+//   . / space = empty
 // It sits fixed in the bottom-left corner with a gentle idle bob.
 
 const ART = [
-  '..B........B..',
-  '..BB......BB..',
-  '..BBBB..BBBB..',
-  '..BBBBBBBBBB..',
-  '.BBBBBBBBBBBB.',
-  '.BBEBBBBBBEBB.',
-  '.BBBBBBBBBBBB.',
-  '.BBBBBPPBBBBB.',
-  '.BBBBBBBBBBBB.',
-  '..BBBBBBBBBB..',
-  '..BBBBBBBBBBB.',
-  '..BBBBBBBBBBBB',
-  '..BB...BB..BB.',
-  '..BB...BB.....',
+  '...B.........B...',
+  '..BBB.......BBB..',
+  '..BBBB.....BBBB..',
+  '..BBBBBBBBBBBBB..',
+  '.BBBBBBBBBBBBBBB.',
+  '.BBBBBBBBBBBBBBB.',
+  'WWBBEEBBBBBEEBBWW',
+  '.WBBEEBBBBBEEBBW.',
+  '.BBBBBBBPPBBBBBB.',
+  '.BBBBBBMMMMBBBBB.',
+  '.BBBBBBBBBBBBB.T.',
+  '..BBBBBBBBBBBBTT.',
+  '..BBBBBBBBBBBBT..',
+  '..BBBBBBBBBBBBB..',
+  '..BBBB...BBBB....',
+  '..BBBB...BBBB....',
 ]
 
 const COLORS = {
   B: '#ffb04d', // orange tabby body
   E: '#5be37a', // glowing green eyes
   P: '#ff5d9e', // pink nose
+  M: '#b45a28', // mouth
+  W: '#d6c8aa', // whiskers
+  T: '#e0913a', // tail
 }
 
 const COLS = ART[0].length
