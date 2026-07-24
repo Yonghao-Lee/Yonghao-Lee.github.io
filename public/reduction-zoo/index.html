@@ -34,6 +34,11 @@
   body{background:var(--bg);color:var(--text);font-family:var(--body);
     font-size:20px;line-height:1.35;padding:clamp(14px,3vw,34px)}
   .wrap{max-width:var(--max-width);margin:0 auto}
+  .backlink{display:inline-block;font-family:var(--body);font-size:17px;color:var(--cyan);
+    text-decoration:none;margin-bottom:16px;border:3px solid var(--border);background:var(--surface);
+    box-shadow:3px 3px 0 var(--shadow-col);padding:5px 12px}
+  .backlink:hover{border-color:var(--cyan)}
+  .backlink:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--shadow-col)}
   h1,h2,h3{font-family:var(--head);font-weight:400;margin:0}
 
   header{display:flex;flex-wrap:wrap;align-items:flex-start;gap:14px 24px;
@@ -152,6 +157,7 @@
 </head>
 <body>
 <div class="wrap">
+  <a class="backlink" href="https://chicoryman.com/">&larr; chicoryman.com</a>
   <header>
     <div class="brand">
       <h1 class="logo"><span class="dot"></span>Reduction Zoo</h1>
@@ -195,7 +201,7 @@
 
   <footer>
     <span>REDUCTION ZOO // SAT &lt;=p 3-SAT &lt;=p IND.SET &lt;=p VERTEX COVER, CLIQUE</span>
-    <span>MIT // chicoryman.com</span>
+    <span>MIT // <a href="https://chicoryman.com/">chicoryman.com</a></span>
   </footer>
 </div>
 
