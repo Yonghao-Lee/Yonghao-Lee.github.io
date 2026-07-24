@@ -1,6 +1,7 @@
 /* Endless-runner mini-game — chunky pixel screen that matches the site. */
 .runner {
   max-width: 620px;
+  margin: 0 auto;
 }
 
 .runner__screen {
