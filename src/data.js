@@ -75,9 +75,25 @@ export const projects = [
       'Clique, with a satisfying assignment carried forward and lit up in the graph at ' +
       'every stage. Runs entirely in the browser.',
     tags: ['JavaScript', 'NP-Completeness', 'SVG', 'Interactive'],
-    link: import.meta.env.BASE_URL + 'reduction-zoo/',
-    linkLabel: 'Open the demo',
+    link: 'https://github.com/Yonghao-Lee/reduction-zoo',
+    linkLabel: 'View on GitHub',
     icon: '🦓',
+    media: import.meta.env.BASE_URL + 'reduction-zoo.gif',
+    mediaAlt: 'A 3-SAT formula reduced to a graph: a satisfying assignment lights up one true literal per clause as an independent set',
+  },
+  {
+    title: 'Turing Machine Studio',
+    blurb:
+      'An interactive Turing machine simulator: watch the tape, head, and state ' +
+      'move as a machine runs. Load famous machines — binary increment, palindrome ' +
+      'checker, unary addition, and the 3- and 4-state Busy Beavers — or write your ' +
+      'own transition table and watch it go. Runs entirely in the browser.',
+    tags: ['JavaScript', 'Computability', 'Turing Machines', 'Interactive'],
+    link: 'https://github.com/Yonghao-Lee/turing-machine-studio',
+    linkLabel: 'View on GitHub',
+    icon: '🎞️',
+    media: import.meta.env.BASE_URL + 'turing-machine-studio.gif',
+    mediaAlt: 'A 3-state Busy Beaver Turing machine running: the tape fills with 1s as the head moves and the state changes, then it halts',
   },
   {
     title: 'Score Distillation: SDS & PDS',
