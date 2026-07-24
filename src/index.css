@@ -202,6 +202,29 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
     90deg, var(--accent) 0 12px, transparent 12px 20px);
 }
 
+/* HUD: a blinking terminal-style cursor before each section title. */
+.section__title::before {
+  content: '\25AE';
+  margin-right: 0.42em;
+  color: var(--green);
+  animation: hud-blink 1.1s steps(1) infinite;
+}
+@keyframes hud-blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .section__title::before { animation: none; } }
+
+/* Projects: show-featured / show-all toggle. */
+.projects__toggle { margin-top: 36px; text-align: center; }
+
+/* A faint arcade-cabinet bezel around the screen (decorative, non-blocking). */
+.cabinet-frame {
+  position: fixed;
+  inset: 6px;
+  z-index: 5;
+  pointer-events: none;
+  border: 2px solid color-mix(in srgb, var(--border) 34%, transparent);
+}
+@media (max-width: 640px) { .cabinet-frame { display: none; } }
+
 /* Reusable chunky pixel panel: square edges + hard offset shadow. */
 .pixel-box {
   background: var(--surface);

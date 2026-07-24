@@ -8,10 +8,13 @@ import Footer from './components/Footer.jsx'
 import PixelCat from './components/PixelCat.jsx'
 import ChatWidget from './components/ChatWidget.jsx'
 import RunnerGame from './components/RunnerGame.jsx'
+import Starfield from './components/Starfield.jsx'
 
 export default function App() {
   return (
     <>
+      <Starfield />
+      <div className="cabinet-frame" aria-hidden="true" />
       <a className="skip-link" href="#main">Skip to content</a>
       <Navbar />
       <main id="main">

@@ -1,0 +1,31 @@
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: -1;            /* behind all content, above the body background */
+  pointer-events: none;
+  overflow: hidden;
+}
+.star {
+  position: absolute;
+  background: var(--star, #a59fd6);
+  opacity: var(--o);
+  image-rendering: pixelated;
+  border-radius: 0;       /* stay square = pixel */
+  animation-name: twinkle;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(2, jump-none);
+}
+@keyframes twinkle {
+  0%, 100% { opacity: var(--o); }
+  50%      { opacity: calc(var(--o) * 0.25); }
+}
+
+/* Dark theme: cool violet stars sit well on the navy ground. */
+:root, :root[data-theme='dark'] { --star: #b9b0ea; }
+/* Light (paper) theme: a starfield on cream looks odd — fade it to a faint warm speckle. */
+:root[data-theme='light'] { --star: #b7a988; }
+:root[data-theme='light'] .starfield { opacity: 0.45; }
+
+@media (prefers-reduced-motion: reduce) {
+  .star { animation: none; }
+}

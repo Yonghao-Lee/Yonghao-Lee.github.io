@@ -1,13 +1,19 @@
+import { useState } from 'react'
 import { projects, links } from '../data.js'
 import Reveal from './Reveal.jsx'
 
+const FEATURED = 6
+
 export default function Projects() {
+  const [showAll, setShowAll] = useState(false)
+  const shown = showAll ? projects : projects.slice(0, FEATURED)
+  const hiddenCount = projects.length - FEATURED
   return (
     <section id="projects" className="section">
       <div className="container">
         <h2 className="section__title">Projects</h2>
         <div className="projects">
-          {projects.map((p, i) => (
+          {shown.map((p, i) => (
             <Reveal as="article" key={p.title} className={p.mediaWide ? 'card card--wide' : 'card'} delay={(i % 3) * 90}>
               {p.media ? (
                 <div className={p.mediaWide ? 'card__media card__media--wide' : 'card__media'}>
@@ -50,6 +56,14 @@ export default function Projects() {
             </Reveal>
           ))}
         </div>
+        {hiddenCount > 0 && (
+          <div className="projects__toggle">
+            <button className="btn" type="button" onClick={() => setShowAll((v) => !v)}>
+              {showAll ? 'Show fewer' : `Show all ${projects.length} projects`}{' '}
+              <span aria-hidden="true">{showAll ? '▲' : '▼'}</span>
+            </button>
+          </div>
+        )}
         {links.github && (
           <div className="projects__more">
             <a
