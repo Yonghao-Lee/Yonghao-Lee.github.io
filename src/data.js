@@ -96,6 +96,23 @@ export const projects = [
     mediaAlt: 'A 3-state Busy Beaver Turing machine running: the tape fills with 1s as the head moves and the state changes, then it halts',
   },
   {
+    title: 'Acqua Alta',
+    blurb:
+      'A folk-horror point-and-click adventure set in a haunted, flooding 1930s ' +
+      'Venice, built from scratch in vanilla JS + HTML5 Canvas. Eight hand-drawn ' +
+      'districts, sixteen items you can combine, a branching non-linear puzzle web, ' +
+      'and nine endings (with a hidden true ending and a discovery tracker). The pixel ' +
+      'scenes are drawn procedurally and baked to offscreen canvases; the whole game ' +
+      'is one self-contained, offline-friendly HTML file. An unofficial fan parody of ' +
+      'Carnival by Beyond Booleans.',
+    tags: ['JavaScript', 'HTML5 Canvas', 'Game', 'Pixel Art'],
+    link: 'https://github.com/Yonghao-Lee/acqua-alta',
+    linkLabel: 'View on GitHub',
+    icon: '🎭',
+    media: import.meta.env.BASE_URL + 'acqua-alta.gif',
+    mediaAlt: 'A tour of the eight districts of Acqua Alta: the moonlit docks, the piazza, the tavern, the fish-market, the chapel, the drowned palazzo, the undercroft where the tide sleeps, and the bell-tower',
+  },
+  {
     title: 'Score Distillation: SDS & PDS',
     blurb:
       'Text-to-image generation and editing by distilling a pretrained Stable ' +

@@ -27,6 +27,24 @@ export default function App() {
           <div className="container">
             <h2 className="section__title">Take a break</h2>
             <RunnerGame />
+            <p className="play-more__lead">…or lose half an hour in a folk-horror adventure I built:</p>
+            <div className="play-grid">
+              <a
+                className="play-tile"
+                href={import.meta.env.BASE_URL + 'acqua-alta/'}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="play-tile__icon" aria-hidden="true">🎭</span>
+                <span className="play-tile__title">Acqua Alta</span>
+                <span className="play-tile__desc">
+                  A point-and-click set in a flooding, haunted 1930s Venice — 8 hand-drawn
+                  districts, a branching puzzle web, and 9 endings. An unofficial fan parody of
+                  <em> Carnival</em> by Beyond Booleans.
+                </span>
+                <span className="play-tile__cta">Play <span aria-hidden="true">&gt;&gt;</span></span>
+              </a>
+            </div>
             <p className="play-more__lead">…or play with some computer-science theory:</p>
             <div className="play-grid">
               <a
