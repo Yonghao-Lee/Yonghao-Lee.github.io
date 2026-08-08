@@ -6,21 +6,22 @@
 export const profile = {
   name: 'Yonghao Lee',
   // Short tagline under your name in the hero.
-  tagline: 'Computer science student — math, machine learning, and signal processing',
+  tagline: 'Computer science student — machine learning, computer vision, and signal processing',
   // A sentence or two for the hero subtitle.
   intro:
-    "I'm a computer science student, and I spend most of my hours with math — " +
-    'more than is probably sensible. Away from it I read about ancient ' +
+    "I'm a computer science student, running mostly on Almdudler and " +
+    'pumpernickel bread. Away from the keyboard I read about ancient ' +
     'Mesopotamia, know enough Sumerian to read a tablet, and listen to a good ' +
     'deal of Mahler.',
   // A short epigraph shown above the About text. Each string is one line.
   epigraph: null,
   // Longer bio for the About section. Each string is its own paragraph.
   about: [
-    'I came to computer science through math, and that is still the part I care ' +
-      'about most. I like problems with a single clean idea underneath them. ' +
-      'Most of what I build — computer vision, machine learning, a bit of signal ' +
-      'processing — is really an attempt to get at that idea.',
+    'I like problems with a single clean idea underneath them. Most of what I ' +
+      'build — computer vision, machine learning, a bit of signal processing — ' +
+      'is really an attempt to get at that idea. The work runs on simple fuel: ' +
+      'a glass of Almdudler within reach, and pumpernickel bread, which I will ' +
+      'defend against all comers.',
     "Away from the keyboard, I read about ancient Mesopotamia, and I know enough " +
       "Sumerian to work my way through a tablet. I've never been convinced by " +
       "Jared Diamond; I don't think geography quietly decided how things turned " +
