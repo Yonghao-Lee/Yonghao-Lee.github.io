@@ -67,6 +67,27 @@ export const skills = [
 // Your projects. Edit, reorder, add, or remove cards freely.
 export const projects = [
   {
+    title: "Removing an Object's Light Footprint",
+    blurb:
+      'Deleting an object from a 3D Gaussian Splatting scene removes its geometry ' +
+      'but not its light footprint — the shadow stays on the floor, the reflection ' +
+      'stays in the mirror. This pipeline removes them together: render an orbit ' +
+      'from the scene, let a removal-specialised video diffusion prior (ROSE) edit ' +
+      'it under masks propagated by SAM 2 from four clicks on one frame, and re-fit ' +
+      'a fresh 3DGS on the result. Measured against pixel-exact clean plates on a ' +
+      'purpose-built benchmark: footprint PSNR 14.2 → 28.4 dB over plain deletion, ' +
+      'and four clicks match oracle localization. Along the way, a generalist ' +
+      'editor rebuilt the object from its own shadow — the footprint encodes the ' +
+      'object. Includes a real-capture demo on Mip-NeRF 360 garden.',
+    tags: ['3D Gaussian Splatting', 'Video Diffusion', 'SAM 2', 'PyTorch', 'Computer Vision'],
+    link: 'https://github.com/Yonghao-Lee/light-footprint-removal',
+    linkLabel: 'View on GitHub',
+    icon: '🪞',
+    media: import.meta.env.BASE_URL + 'light-footprint.gif',
+    mediaAlt: 'Side by side orbit of a room with a red sphere, its shadow and its mirror reflection — and the same orbit after removal, with object, shadow and reflection gone together',
+    mediaWide: true,
+  },
+  {
     title: 'Reduction Zoo',
     blurb:
       'An interactive visualizer for NP-complete reductions — step one certificate ' +
@@ -94,23 +115,6 @@ export const projects = [
     icon: '🎞️',
     media: import.meta.env.BASE_URL + 'turing-machine-studio.gif',
     mediaAlt: 'A 3-state Busy Beaver Turing machine running: the tape fills with 1s as the head moves and the state changes, then it halts',
-  },
-  {
-    title: 'Acqua Alta',
-    blurb:
-      'A folk-horror point-and-click adventure set in a haunted, flooding 1930s ' +
-      'Venice, built from scratch in vanilla JS + HTML5 Canvas. Eight hand-drawn ' +
-      'districts, sixteen items you can combine, a branching non-linear puzzle web, ' +
-      'and nine endings (with a hidden true ending and a discovery tracker). The pixel ' +
-      'scenes are drawn procedurally and baked to offscreen canvases; the whole game ' +
-      'is one self-contained, offline-friendly HTML file. An unofficial fan parody of ' +
-      'Carnival by Beyond Booleans.',
-    tags: ['JavaScript', 'HTML5 Canvas', 'Game', 'Pixel Art'],
-    link: 'https://github.com/Yonghao-Lee/acqua-alta',
-    linkLabel: 'View on GitHub',
-    icon: '🎭',
-    media: import.meta.env.BASE_URL + 'acqua-alta.gif',
-    mediaAlt: 'A tour of the eight districts of Acqua Alta: the moonlit docks, the piazza, the tavern, the fish-market, the chapel, the drowned palazzo, the undercroft where the tide sleeps, and the bell-tower',
   },
   {
     title: 'Score Distillation: SDS & PDS',
