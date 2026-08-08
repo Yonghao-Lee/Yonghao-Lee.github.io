@@ -88,35 +88,6 @@ export const projects = [
     mediaWide: true,
   },
   {
-    title: 'Reduction Zoo',
-    blurb:
-      'An interactive visualizer for NP-complete reductions — step one certificate ' +
-      'through the whole chain. Type any CNF formula and watch it flow: SAT → 3-SAT ' +
-      '(clause splitting with fresh variables) → Independent Set → Vertex Cover → ' +
-      'Clique, with a satisfying assignment carried forward and lit up in the graph at ' +
-      'every stage. Runs entirely in the browser.',
-    tags: ['JavaScript', 'NP-Completeness', 'SVG', 'Interactive'],
-    link: 'https://github.com/Yonghao-Lee/reduction-zoo',
-    linkLabel: 'View on GitHub',
-    icon: '🦓',
-    media: import.meta.env.BASE_URL + 'reduction-zoo.gif',
-    mediaAlt: 'A 3-SAT formula reduced to a graph: a satisfying assignment lights up one true literal per clause as an independent set',
-  },
-  {
-    title: 'Turing Machine Studio',
-    blurb:
-      'An interactive Turing machine simulator: watch the tape, head, and state ' +
-      'move as a machine runs. Load famous machines — binary increment, palindrome ' +
-      'checker, unary addition, and the 3- and 4-state Busy Beavers — or write your ' +
-      'own transition table and watch it go. Runs entirely in the browser.',
-    tags: ['JavaScript', 'Computability', 'Turing Machines', 'Interactive'],
-    link: 'https://github.com/Yonghao-Lee/turing-machine-studio',
-    linkLabel: 'View on GitHub',
-    icon: '🎞️',
-    media: import.meta.env.BASE_URL + 'turing-machine-studio.gif',
-    mediaAlt: 'A 3-state Busy Beaver Turing machine running: the tape fills with 1s as the head moves and the state changes, then it halts',
-  },
-  {
     title: 'Score Distillation: SDS & PDS',
     blurb:
       'Text-to-image generation and editing by distilling a pretrained Stable ' +
