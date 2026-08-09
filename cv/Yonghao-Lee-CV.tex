@@ -64,7 +64,7 @@
 
 \section{Skills}
 
-\cvitem{Programming}{Python, C, C++, Java, C, Go, MATLAB, Unix, Web development}
+\cvitem{Programming}{Python, C, C++, Java, Go, MATLAB, Unix, Web development}
 \cvitem{Tools \& AI}{PyTorch, SpaCy, Git, LaTeX, Excel, Claude Code}
 
 %----------------------------------------------------------------------------------------
@@ -72,6 +72,12 @@
 %----------------------------------------------------------------------------------------
 
 \section{Projects}
+\cventry{2026}{\href{https://github.com/Yonghao-Lee/light-footprint-removal}{Removing an Object's Light Footprint from a 3D Scene}}{}{}{}{
+\begin{itemize}
+    \item Deleted an object from a \textbf{3D Gaussian Splatting} scene along with its shadow, mirror image, and color bleed: a video diffusion prior edits an orbit render under \textbf{SAM 2} masks from four clicks, then 3DGS is re-fit.
+    \item Benchmarked on pixel-exact ground truth: \textbf{31.3 dB} PSNR on held-out views vs.\ 23.1 for Gaussian deletion.
+\end{itemize}
+}
 \cventry{2025}{\href{https://github.com/Yonghao-Lee/differentiable-rendering}{Differentiable Rendering \& Neural Radiance Fields}}{}{}{}{
 \begin{itemize}
     \item From-scratch differentiable rendering in \textbf{PyTorch}: SIREN neural fields, sphere tracing, volume rendering.
@@ -82,12 +88,6 @@
 \begin{itemize}
     \item From-scratch structure-from-motion in \textbf{Python}/\textbf{NumPy}: eight-point algorithm, essential-matrix pose recovery.
     \item Triangulated a 3D point cloud from two calibrated views, with image rectification.
-\end{itemize}
-}
-\cventry{2024}{\href{https://github.com/Yonghao-Lee/Multi-Threaded-MapReduce-Framework}{Multi-Threaded MapReduce Framework}}{}{}{}{
-\begin{itemize}
-    \item Designed and implemented a robust MapReduce framework in \textbf{C++} to process large datasets concurrently.
-    \item Engineered thread-safe job queues and synchronized worker threads using mutexes and condition variables to prevent race conditions.
 \end{itemize}
 }
 
