@@ -43,42 +43,26 @@
 }
 
 @font-face {
-  font-family: 'Space Mono';
+  font-family: 'DotGothic16';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/space-mono-400-latin-ext.woff2') format('woff2');
+  src: url('/fonts/dotgothic16-latin-ext.woff2') format('woff2');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
-  font-family: 'Space Mono';
+  font-family: 'DotGothic16';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/space-mono-400-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Space Mono';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/space-mono-700-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: 'Space Mono';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/space-mono-700-latin.woff2') format('woff2');
+  src: url('/fonts/dotgothic16-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 /* ===========================================================================
    PIXEL / ARCADE THEME
    Fonts: "Press Start 2P" (name, headings, buttons), "VT323" (terminal
-   accents: tagline, chips, footer) and "Space Mono" (paragraphs).
+   accents: tagline, chips, footer) and "DotGothic16" (paragraphs).
    Tweak the palette tokens below to recolor the whole site.
    =========================================================================== */
 :root {
@@ -104,7 +88,7 @@
   --pixel: 4px;                 /* base pixel unit */
 
   --font-head: 'Press Start 2P', monospace;
-  --font-body: 'Space Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-body: 'DotGothic16', ui-monospace, 'SF Mono', Menlo, monospace;
   --font-term: 'VT323', 'Courier New', monospace;
 
   color-scheme: dark;
@@ -142,7 +126,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 96px; }
 body {
   margin: 0;
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 1.04rem;
   background: var(--bg);
   color: var(--text);
   line-height: 1.65;
@@ -371,7 +355,7 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
   color: var(--cyan);
   margin: 28px 0 0;
 }
-.hero__intro { max-width: 600px; margin: 18px auto 0; color: var(--muted); font-size: 1.02rem; }
+.hero__intro { max-width: 600px; margin: 18px auto 0; color: var(--muted); font-size: 1.08rem; }
 .hero__cta { display: flex; gap: 18px; justify-content: center; margin-top: 40px; flex-wrap: wrap; }
 
 /* Chunky pressable arcade buttons. */
@@ -423,8 +407,8 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
    About
    =========================================================================== */
 .about { max-width: 720px; }
-.about__para { color: var(--text); font-size: 0.98rem; line-height: 1.75; margin: 0 0 18px; }
-.about__para:first-child { font-size: 1.06rem; }
+.about__para { color: var(--text); font-size: 1.04rem; line-height: 1.75; margin: 0 0 18px; }
+.about__para:first-child { font-size: 1.12rem; }
 .about__para:last-child { margin-bottom: 0; }
 
 .about__epigraph {
@@ -540,7 +524,7 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
 .card__media-icon { font-size: 3rem; line-height: 1; }
 .card:hover .card__media { border-color: var(--green); }
 .card__title { font-family: var(--font-head); font-size: 0.85rem; line-height: 1.5; margin: 0 0 12px; color: var(--yellow); }
-.card__blurb { color: var(--muted); margin: 0 0 18px; flex: 1; font-size: 0.88rem; line-height: 1.65; }
+.card__blurb { color: var(--muted); margin: 0 0 18px; flex: 1; font-size: 0.95rem; line-height: 1.65; }
 .card__tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0 0 20px; }
 .card__link {
   font-family: var(--font-head);
@@ -588,14 +572,14 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
 .play-tile:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--shadow-col); }
 .play-tile__icon { font-size: 2.2rem; line-height: 1; }
 .play-tile__title { font-family: var(--font-head); font-size: 0.95rem; color: var(--yellow); }
-.play-tile__desc { color: var(--muted); font-size: 0.88rem; line-height: 1.6; flex: 1; }
+.play-tile__desc { color: var(--muted); font-size: 0.95rem; line-height: 1.6; flex: 1; }
 .play-tile__cta { font-family: var(--font-head); font-size: 0.7rem; color: var(--cyan); }
 
 /* ===========================================================================
    Contact
    =========================================================================== */
 .contact { max-width: 720px; }
-.contact__lead { color: var(--text); font-size: 0.98rem; line-height: 1.75; max-width: 560px; }
+.contact__lead { color: var(--text); font-size: 1.04rem; line-height: 1.75; max-width: 560px; }
 .contact__location { font-family: var(--font-term); color: var(--cyan); margin: 6px 0 28px; font-size: 1.4rem; }
 .contact__links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 16px; }
 .contact__link {
@@ -607,7 +591,7 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
   border: var(--pixel) solid var(--border);
   box-shadow: 5px 5px 0 var(--shadow-col);
   color: var(--text);
-  font-size: 0.92rem;
+  font-size: 0.98rem;
   transition: transform 0.06s, box-shadow 0.06s, border-color 0.1s;
 }
 .contact__link:hover {
@@ -673,10 +657,10 @@ img { max-width: 100%; display: block; image-rendering: pixelated; }
    Responsive
    =========================================================================== */
 @media (max-width: 720px) {
-  body { font-size: 0.95rem; }
+  body { font-size: 1rem; }
   .hero { padding: 104px 0 72px; }
   .hero__tagline { font-size: 1.45rem; }
-  .hero__intro { font-size: 0.95rem; }
+  .hero__intro { font-size: 1rem; }
   .section__title { text-shadow: 2px 2px 0 var(--shadow-col); }
   .section { padding: 64px 0; }
   .nav__toggle { display: flex; }
