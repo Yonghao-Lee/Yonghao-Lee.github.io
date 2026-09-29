@@ -6,17 +6,22 @@
 export const profile = {
   name: 'Yonghao Lee',
   // Short tagline under your name in the hero.
-  tagline: 'Computer science student — machine learning, computer vision, and signal processing',
+  tagline: 'B.Sc. Computer Science · The Hebrew University of Jerusalem',
   // A sentence or two for the hero subtitle.
   intro:
-    "I'm a computer science student, running mostly on Almdudler and " +
-    'pumpernickel bread. Away from the keyboard I read about ancient ' +
-    'Mesopotamia, know enough Sumerian to read a tablet, and listen to a good ' +
-    'deal of Mahler.',
+    'I build computer-vision and machine-learning systems from first ' +
+    'principles — most recently, removing an object from a 3D scene together ' +
+    'with its shadow and its reflection.',
   // A short epigraph shown above the About text. Each string is one line.
   epigraph: null,
   // Longer bio for the About section. Each string is its own paragraph.
   about: [
+    "I'm a computer science student at the Hebrew University of Jerusalem " +
+      '(B.Sc., 2023–2027), working mostly on computer vision and machine ' +
+      'learning. Alongside my studies I spent four years as a cyber threat ' +
+      'analyst at BrandShield, investigating phishing sites and brand ' +
+      "impersonation and getting them taken down. I'm a native speaker of " +
+      'English and Chinese, fluent in Hebrew, and conversational in Japanese.',
     'I like problems with a single clean idea underneath them. Most of what I ' +
       'build — computer vision, machine learning, a bit of signal processing — ' +
       'is really an attempt to get at that idea. The work runs on simple fuel: ' +
@@ -32,7 +37,7 @@ export const profile = {
       'the end of them.',
   ],
   // The location line in the contact section (optional — set to '' to hide).
-  location: 'Israel',
+  location: 'Jerusalem, Israel',
 }
 
 export const links = {
@@ -70,16 +75,11 @@ export const projects = [
   {
     title: "Removing an Object's Light Footprint",
     blurb:
-      'Deleting an object from a 3D Gaussian Splatting scene removes its geometry ' +
-      'but not its light footprint — the shadow stays on the floor, the reflection ' +
-      'stays in the mirror. This pipeline removes them together: render an orbit ' +
-      'from the scene, let a removal-specialised video diffusion prior (ROSE) edit ' +
-      'it under masks propagated by SAM 2 from four clicks on one frame, and re-fit ' +
-      'a fresh 3DGS on the result. Measured against pixel-exact clean plates on a ' +
-      'purpose-built benchmark: footprint PSNR 14.2 → 28.4 dB over plain deletion, ' +
-      'and four clicks match oracle localization. Along the way, a generalist ' +
-      'editor rebuilt the object from its own shadow — the footprint encodes the ' +
-      'object. Includes a real-capture demo on Mip-NeRF 360 garden.',
+      'Deleting an object from a 3D Gaussian Splatting scene leaves its shadow ' +
+      'and reflection behind. This pipeline removes them together — a video ' +
+      'diffusion prior (ROSE) edits an orbit render under SAM 2 masks from four ' +
+      'clicks, then a fresh 3DGS is re-fit — lifting footprint PSNR from 14.2 ' +
+      'to 28.4 dB over plain deletion.',
     tags: ['3D Gaussian Splatting', 'Video Diffusion', 'SAM 2', 'PyTorch', 'Computer Vision'],
     link: 'https://github.com/Yonghao-Lee/light-footprint-removal',
     linkLabel: 'View on GitHub',
@@ -92,11 +92,9 @@ export const projects = [
     title: 'Score Distillation: SDS & PDS',
     blurb:
       'Text-to-image generation and editing by distilling a pretrained Stable ' +
-      'Diffusion model into a single optimizable latent — no reverse diffusion ' +
-      'sampling. Implements Score Distillation Sampling (DreamFusion) to generate ' +
-      'images from prompts, and Posterior Distillation Sampling to edit a source ' +
-      'image toward a target prompt by matching stochastic latents. The thumbnail ' +
-      'shows three source → edited pairs produced by PDS.',
+      'Diffusion model into a single optimizable latent, with no reverse ' +
+      'diffusion sampling. Implements Score Distillation Sampling (DreamFusion) ' +
+      'for generation and Posterior Distillation Sampling for prompt-guided editing.',
     tags: ['PyTorch', 'Diffusion Models', 'Stable Diffusion', 'SDS / PDS'],
     link: 'https://github.com/Yonghao-Lee/sds-pds-2d',
     linkLabel: 'View on GitHub',
@@ -108,11 +106,9 @@ export const projects = [
   {
     title: 'Differentiable Rendering',
     blurb:
-      'Differentiable rendering built from scratch in PyTorch: neural fields ' +
-      '(SIREN) that fit a signal from its coordinates, sphere tracing and ' +
-      'volume rendering of implicit scenes, and a NeRF — a positional-encoded ' +
-      'coordinate MLP trained by volume rendering on the lego scene. The ' +
-      'thumbnail is my trained NeRF, rendered from a full orbit.',
+      'Differentiable rendering from scratch in PyTorch: SIREN neural fields, ' +
+      'sphere tracing and volume rendering. It ends in a NeRF trained on the ' +
+      'lego scene — the thumbnail is its full-orbit render.',
     tags: ['PyTorch', 'NeRF', 'Volume Rendering', 'Neural Fields'],
     link: 'https://github.com/Yonghao-Lee/differentiable-rendering',
     linkLabel: 'View on GitHub',
@@ -123,11 +119,9 @@ export const projects = [
   {
     title: 'Multi-View 3D Reconstruction',
     blurb:
-      'Classical multi-view geometry from scratch: camera calibration, the ' +
-      'normalized eight-point algorithm, essential-matrix pose recovery, image ' +
-      'rectification, and triangulating a 3D point cloud from two views. The ' +
-      'thumbnail is a point cloud reconstructed by the pipeline from two ' +
-      'synthetic camera views, then orbited.',
+      'Classical multi-view geometry from scratch: calibration, the normalized ' +
+      'eight-point algorithm, essential-matrix pose recovery and rectification, ' +
+      'ending in a 3D point cloud triangulated from two views.',
     tags: ['Python', 'Computer Vision', 'Epipolar Geometry', 'Triangulation'],
     link: 'https://github.com/Yonghao-Lee/multi-view-reconstruction',
     linkLabel: 'View on GitHub',
@@ -138,11 +132,9 @@ export const projects = [
   {
     title: 'Stereo Mosaicing',
     blurb:
-      'Generates a stereo panoramic video from a single moving-camera sequence ' +
-      'using manifold mosaicing and Lucas–Kanade optical flow. Slicing narrow ' +
-      'vertical strips from different horizontal positions yields left/right-eye ' +
-      'views — a "wiggle stereo" 3D effect from one monocular camera. The ' +
-      'thumbnail is the pipeline run on a synthetic two-depth-layer scene.',
+      'Turns a single moving-camera video into a stereo panorama with manifold ' +
+      'mosaicing and Lucas–Kanade optical flow: strips taken at different ' +
+      'offsets become left- and right-eye views, 3D from one camera.',
     tags: ['Python', 'Computer Vision', 'Optical Flow', 'NumPy'],
     link: 'https://github.com/Yonghao-Lee/Video-Mosaicing',
     linkLabel: 'View on GitHub',

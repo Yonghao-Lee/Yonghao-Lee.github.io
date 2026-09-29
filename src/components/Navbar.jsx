@@ -5,8 +5,8 @@ import PixelLion from './PixelLion.jsx'
 
 const sections = [
   ['about', 'About'],
-  ['skills', 'Skills'],
   ['projects', 'Projects'],
+  ['skills', 'Skills'],
   ['contact', 'Contact'],
   ['play', 'Play'],
 ]

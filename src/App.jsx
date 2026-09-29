@@ -20,8 +20,8 @@ export default function App() {
       <main id="main">
         <Hero />
         <About />
-        <Skills />
         <Projects />
+        <Skills />
         <Contact />
         <section id="play" className="section">
           <div className="container">

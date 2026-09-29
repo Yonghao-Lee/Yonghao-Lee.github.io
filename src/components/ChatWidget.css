@@ -33,6 +33,7 @@
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0 var(--shadow-col);
 }
+.cw-launch__short { display: none; }
 .cw-launch__dot {
   width: 10px;
   height: 10px;
@@ -291,8 +292,11 @@
   }
   .cw-launch {
     right: 12px;
-    bottom: 18px;
+    bottom: 14px;
+    padding: 10px 12px;
   }
+  .cw-launch__label { display: none; }
+  .cw-launch__short { display: inline; }
 }
 
 @media (prefers-reduced-motion: reduce) {

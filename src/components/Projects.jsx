@@ -14,28 +14,28 @@ export default function Projects() {
         <h2 className="section__title">Projects</h2>
         <div className="projects">
           {shown.map((p, i) => (
-            <Reveal as="article" key={p.title} className={p.mediaWide ? 'card card--wide' : 'card'} delay={(i % 3) * 90}>
-              {p.media ? (
-                <div className={p.mediaWide ? 'card__media card__media--wide' : 'card__media'}>
-                  {p.media.endsWith('.mp4') ? (
-                    <video
-                      src={p.media}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      aria-label={p.mediaAlt || p.title}
-                      ref={(el) => {
-                        if (el && p.mediaRate) el.playbackRate = p.mediaRate
-                      }}
-                    />
-                  ) : (
-                    <img src={p.media} alt={p.mediaAlt || p.title} loading="lazy" />
-                  )}
-                </div>
-              ) : (
-                <div className="card__icon" aria-hidden="true">{p.icon}</div>
-              )}
+            <Reveal as="article" key={p.title} className="card" delay={(i % 3) * 90}>
+              {/* Every card gets the same 16:9 "screen", so titles line up
+                  whatever the thumbnail's shape; icon-only cards show the icon. */}
+              <div className={p.mediaWide ? 'card__media card__media--wide' : 'card__media'}>
+                {!p.media ? (
+                  <span className="card__media-icon" aria-hidden="true">{p.icon}</span>
+                ) : p.media.endsWith('.mp4') ? (
+                  <video
+                    src={p.media}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    aria-label={p.mediaAlt || p.title}
+                    ref={(el) => {
+                      if (el && p.mediaRate) el.playbackRate = p.mediaRate
+                    }}
+                  />
+                ) : (
+                  <img src={p.media} alt={p.mediaAlt || p.title} loading="lazy" decoding="async" />
+                )}
+              </div>
               <h3 className="card__title">{p.title}</h3>
               <p className="card__blurb">{p.blurb}</p>
               <ul className="card__tags">

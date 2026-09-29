@@ -164,9 +164,10 @@ export default function ChatWidget() {
 
   if (!open) {
     return (
-      <button className="cw-launch" type="button" onClick={() => setOpen(true)} aria-label="Open the chatbot">
+      <button className="cw-launch" type="button" onClick={() => setOpen(true)} aria-label="Ask about me: open the chatbot">
         <span className="cw-launch__dot" aria-hidden="true" />
-        Ask about me
+        <span className="cw-launch__label">Ask about me</span>
+        <span className="cw-launch__short" aria-hidden="true">Ask</span>
       </button>
     )
   }
